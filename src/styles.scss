@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+// font
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital@1&family=Roboto+Condensed:wght@300&display=swap');
+
+a, h1, p{
+    font-family: 'Raleway', sans-serif;
+}
