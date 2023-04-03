@@ -9,9 +9,8 @@ export class MainPageComponent implements OnInit {
   @HostListener('window:scroll', ['$event']) onScrollEvent($event: any){
      console.log("scrolling");
   }
-  imgsrc1 = "../../assets/Images/1.jpg"
-  imgsrc2 = "../../assets/Images/2.jpg"
-  imgsrc3 = "../../assets/Images/3.jpg"
+  imgsrc1 = "https://drive.google.com/u/0/uc?id=1Z8E2HVm1qm7WCOm6EpO9gZIlR8Qq0fAi"
+  imgsrc2 = "https://drive.google.com/u/0/uc?id=1TGdMQxA7Z-7IGjlWmRKoqqQyTogJgpyG"
 
   constructor() { }
 
