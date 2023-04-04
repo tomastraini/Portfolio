@@ -88,7 +88,9 @@ export class MainPageComponent implements OnInit {
   loadImgs()
   {
     this.countImagesPoints += "."; 
-    this.countImages++;    
+    this.countImages++;
+    console.log(this.countImages);
+    
     
     if(this.countImages === 12)
     {

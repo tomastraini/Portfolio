@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-  env = "dev";
+  env = "prod";
 
   ngOnInit(): void {
     this.changeIcon();
