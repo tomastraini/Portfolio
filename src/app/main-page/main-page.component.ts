@@ -66,12 +66,8 @@ export class MainPageComponent implements OnInit {
     var ua = navigator.userAgent;
     var screenheight = window.screen.availHeight
     var screenwidth = window.screen.availWidth
-    console.log("HEIGHT: " + screenheight);
-    console.log("WIDTH: " + screenwidth);
-    console.log("RELATION: " + (screenheight / screenwidth));
     this.is19201080 = (screenheight / screenwidth) == 1.7777777777777777 ||
     (screenheight / screenwidth) == 0.53125 || screenwidth == 1280 || screenwidth == 1920;
-    console.log("CONDITION: " + this.is19201080);
     
     if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(ua))
     {

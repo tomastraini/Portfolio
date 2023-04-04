@@ -148,10 +148,11 @@
   <hr>
 
 <div id="AboutMe" class="{{ fadeInAbout }}">
-  <h1 style="color: rgb(56, 72, 94); font-weight:bold;">ABOUT ME
+  <h1 style="color: rgb(56, 72, 94); font-weight:bold;" [ngStyle]="{'margin-left':isPhone === true ? '1%' : '0%'}">
+    ABOUT ME
   </h1>
 
-  <p>
+  <p [ngStyle]="{'margin-left':isPhone === true ? '1%' : '0%'}">
     I am currently a Ssr. Fullstack developer working at PwC.
     <br>
     In the last 2 years i've been working in a set of projects which have given me a good and trustworthy
