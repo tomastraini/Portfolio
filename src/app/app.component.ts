@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
+  // env = "dev";
   env = "prod";
 
   ngOnInit(): void {
@@ -20,7 +21,7 @@ export class AppComponent implements OnInit {
   changeIcon() {
     this.favIcon.href = this.env == "dev" ?
     './assets/Images/favicon.ico' :
-    '/Portfolio/assets/Images/favicon.jpg';
+    '/Portfolio/assets/Images/favicon.ico';
   }
 
 }

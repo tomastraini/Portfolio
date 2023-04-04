@@ -65,7 +65,8 @@ export class MainPageComponent implements OnInit {
     this.handleAnimation();
     var ua = navigator.userAgent;
     var screenheight = window.screen.availHeight
-    if(screenheight == 1080)
+    var screenwidth = window.screen.availWidth
+    if((screenheight / screenwidth) == 1.7777777777777777)
     {
       this.is19201080 = true
     }
