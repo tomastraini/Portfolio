@@ -66,6 +66,10 @@ export class MainPageComponent implements OnInit {
     var ua = navigator.userAgent;
     var screenheight = window.screen.availHeight
     var screenwidth = window.screen.availWidth
+    console.log("HEIGHT: " + screenheight);
+    console.log("WIDTH: " + screenwidth);
+    console.log("RELATION: " + (screenheight / screenwidth));
+    
     if((screenheight / screenwidth) == 1.7777777777777777)
     {
       this.is19201080 = true
@@ -90,8 +94,6 @@ export class MainPageComponent implements OnInit {
   {
     this.countImagesPoints += "."; 
     this.countImages++;
-    console.log(this.countImages);
-    
     
     if(this.countImages === 12)
     {
