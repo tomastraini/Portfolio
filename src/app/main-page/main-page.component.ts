@@ -20,6 +20,8 @@ export class MainPageComponent implements OnInit {
   fadeInAbout = "fadeInCall";
   fadeInResume = "fadeInCall";
 
+  environment = "prod"
+
   isPhone = false
 
   clicked = 0;
@@ -29,8 +31,14 @@ export class MainPageComponent implements OnInit {
 
   imagesLoaded = true;
 
-  imgsrc1 = "https://drive.google.com/u/0/uc?id=1Z8E2HVm1qm7WCOm6EpO9gZIlR8Qq0fAi"
-  imgsrc2 = "https://drive.google.com/u/0/uc?id=1TGdMQxA7Z-7IGjlWmRKoqqQyTogJgpyG"
+  imgsrc1 = this.environment == "dev" ?
+  "https://drive.google.com/u/0/uc?id=1Z8E2HVm1qm7WCOm6EpO9gZIlR8Qq0fAi" :
+  "./assets/Images/1.jpg"
+  imgsrc2 = 
+  this.environment == "dev" ?
+  "https://drive.google.com/u/0/uc?id=1TGdMQxA7Z-7IGjlWmRKoqqQyTogJgpyG" :
+  "./assets/Images/3.jpg"
+
   imgizo = "https://institutozonaoeste.edu.ar/wp-content/uploads/2023/03/cropped-cropped-logo-izo-izo-1-150x150-1.png"
   imgpwc   = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/PricewaterhouseCoopers_Logo.svg/2560px-PricewaterhouseCoopers_Logo.svg.png"
   imgingenea   = "https://www.ingenea.com.ar/Vistas/images/LogoIngenea.png"
