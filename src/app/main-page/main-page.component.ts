@@ -70,7 +70,8 @@ export class MainPageComponent implements OnInit {
     console.log("WIDTH: " + screenwidth);
     console.log("RELATION: " + (screenheight / screenwidth));
     
-    if((screenheight / screenwidth) == 1.7777777777777777)
+    if((screenheight / screenwidth) == 1.7777777777777777 ||
+      (screenheight / screenwidth) == 0.53125)
     {
       this.is19201080 = true
     }
