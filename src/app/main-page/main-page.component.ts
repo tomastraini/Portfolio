@@ -69,15 +69,10 @@ export class MainPageComponent implements OnInit {
     console.log("HEIGHT: " + screenheight);
     console.log("WIDTH: " + screenwidth);
     console.log("RELATION: " + (screenheight / screenwidth));
-    var condition = (screenheight / screenwidth) == 1.7777777777777777 ||
+    this.is19201080 = (screenheight / screenwidth) == 1.7777777777777777 ||
     (screenheight / screenwidth) == 0.53125 || screenwidth == 1280 || screenwidth == 1920;
-    console.log("CONDITION: " + condition);
+    console.log("CONDITION: " + this.is19201080);
     
-    if((screenheight / screenwidth) == 1.7777777777777777 ||
-      (screenheight / screenwidth) == 0.53125 || screenwidth == 1280 || screenwidth == 1920)
-    {
-      this.is19201080 = true
-    }
     if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(ua))
     {
       this.isPhone = true;
