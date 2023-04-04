@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, HostBinding, HostListener } from '@angular/core';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-main-page',
@@ -6,6 +7,7 @@ import { Component, OnInit, Input, HostBinding, HostListener } from '@angular/co
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit {
+  constructor(public appcomp: AppComponent) { }
 
   HomeTextColor = "text-white";
   AboutTextColor = "text-white";
@@ -20,14 +22,16 @@ export class MainPageComponent implements OnInit {
   fadeInAbout = "fadeInCall";
   fadeInResume = "fadeInCall";
 
-  environment = "prod"
+  environment = this.appcomp.env;
 
   isPhone = false
+  is19201080 = false;
 
   clicked = 0;
 
   AboutHomeHeight = 800;
-  ResumeHomeHeight = 2000;
+  ResumeHomeHeight = 1960;
+  PortfolioHeight = 1960;
 
   imagesLoaded = true;
 
@@ -37,7 +41,7 @@ export class MainPageComponent implements OnInit {
   imgsrc2 = 
   this.environment == "dev" ?
   "https://drive.google.com/u/0/uc?id=1TGdMQxA7Z-7IGjlWmRKoqqQyTogJgpyG" :
-  "/Portfolio/assets/Images/1.jpg"
+  "/Portfolio/assets/Images/3.jpg"
 
   imgizo = "https://institutozonaoeste.edu.ar/wp-content/uploads/2023/03/cropped-cropped-logo-izo-izo-1-150x150-1.png"
   imgpwc   = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/PricewaterhouseCoopers_Logo.svg/2560px-PricewaterhouseCoopers_Logo.svg.png"
@@ -46,11 +50,11 @@ export class MainPageComponent implements OnInit {
   imggenexus  = "https://www.genexus.com/media/images/genexusbyglobant_large.svg?timestamp=20220921163437"
   imgtrinity  = "https://www.trinitycollege.com/images/trinity_college_london_logo.png"
   imgefset  = "https://www.efset.org/cert/6ea6771479ceeade5f025fb16ff71264.svg"
+  imgPoD  = "https://policyondemand.pwc.com/Assets/images/PoD-logo-001.jpg"
 
   countImages = 0;
   countImagesPoints = "";
 
-  constructor() { }
 
   @HostListener('window:scroll', ['$event']) onScrollEvent($event: any){
     this.handleAnimation();
@@ -60,7 +64,11 @@ export class MainPageComponent implements OnInit {
   {
     this.handleAnimation();
     var ua = navigator.userAgent;
-
+    var screenheight = window.screen.availHeight
+    if(screenheight == 1080)
+    {
+      this.is19201080 = true
+    }
     if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(ua))
     {
       this.isPhone = true;
@@ -80,11 +88,9 @@ export class MainPageComponent implements OnInit {
   loadImgs()
   {
     this.countImagesPoints += "."; 
-    this.countImages++;
-    console.log(this.countImages);
+    this.countImages++;    
     
-    
-    if(this.countImages === 9)
+    if(this.countImages === 12)
     {
       this.imagesLoaded = false;
     }
@@ -93,6 +99,7 @@ export class MainPageComponent implements OnInit {
   handleAnimation()
   {
     var height = window.scrollY;
+
     height = height == undefined || height == null ? 0 : height;
     
     if(height > 0 && height < this.AboutHomeHeight)
@@ -125,6 +132,22 @@ export class MainPageComponent implements OnInit {
       this.fadeInAbout = "fadeOutCall"
       this.fadeInResume = "fadeInCall"
     }
+
+    if(height > this.PortfolioHeight)
+    {
+      this.HomeTextColor = "text-secondary";
+      this.AboutTextColor = "text-secondary";
+      this.ResumeTextColor = "text-secondary";
+      this.PortfolioTextColor = "text-white";
+    
+      this.HomeIcoColor = "text-white";
+      this.AboutIcoColor = "text-white";
+      this.ResumeIcoColor = "text-white";
+      this.PortfolioIcoColor = "IcoColor";
+
+      this.fadeInAbout = "fadeOutCall"
+      this.fadeInResume = "fadeInCall"
+    }
   }
 
   GoTo(link: any): void
@@ -151,6 +174,15 @@ export class MainPageComponent implements OnInit {
       });
     }
 
+    if(to.includes("portfolio"))
+    {
+      document.getElementById("portfolio")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest"
+      });
+    }
+
   }
 
   async collapseNavbar(): Promise<void>
@@ -162,8 +194,6 @@ export class MainPageComponent implements OnInit {
     if(!this.isOdd(this.clicked))
     {
       await this.delay(370);
-      console.log("done");
-      
       coll.className = "collapse navbar-collapse"
     }
   }

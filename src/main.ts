@@ -7,7 +7,7 @@ import { environment } from './environments/environment';
 if (environment.production) {
   enableProdMode();
 }
-
+var imagepath = "./assets/Images/Business__28148_29.ico"
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 

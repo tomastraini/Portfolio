@@ -236,6 +236,91 @@
     content: "";
   }
 
+  // TIMELINE FOR PHONES 
+
+  .timelinePhone
+  {
+    border-left: 1px solid #3f0d0c;
+    position: relative;
+    list-style: none;
+    margin-top: 25%;
+    margin-left: -29.8%;
+  }
+
+  .timelinePhone .timeline-item {
+    position: relative;
+  }
+
+  .timelinePhone .timeline-item-end {
+    position: relative;
+  }
+  
+  .timelinePhone .timeline-item:after {
+    position: absolute;
+    display: block;
+    top: 0;
+  }
+
+  .timelinePhone .timeline-item-end:after {
+    position: absolute;
+    display: block;
+    top: -500;
+  }
+  
+  .timelinePhone .timeline-item:after {
+    background-color: #3f0d0c;
+    left: -38px;
+    border-radius: 50%;
+    height: 11px;
+    width: 11px;
+    content: "";
+  }
+
+  .timelinePhone .timeline-item-end:after {
+    background-color: #3f0d0c;
+    left: -38px;
+    border-radius: 50%;
+    height: 11px;
+    width: 11px;
+    content: "";
+  }
+
+  // END OF TIMELINE FOR PHONES 
+
+
+  .educationDivide
+  {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 0px;
+    align-items:flex-start;
+  }
+  
+  
+  
+  .formalEducation
+  {
+    display: inline-flex;
+    flex-direction: row;
+    margin-right: auto;
+  }
+  
+  .formalEducation .timeline
+  {
+    margin-top: 20%;
+    margin-left: -26%;
+  }
+  
+  
+  .formalEducation2
+  {
+    display: inline-flex;
+    flex-direction: column;
+    margin-top: 10.2%;
+  }
+  
+  
+
 
 
   .IcoColor
@@ -357,37 +442,4 @@
 .mrl-5
 {
   margin-left: -2%;
-}
-
-.educationDivide
-{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 0px;
-  align-items:flex-start;
-}
-
-.formalEducation
-{
-  display: inline-flex;
-  flex-direction: row;
-  margin-right: auto;
-}
-
-.formalEducation .timeline
-{
-  margin-top: 20%;
-  margin-left: -26%;
-}
-
-
-.formalEducation2
-{
-  display: inline-flex;
-  flex-direction: column;
-  margin-top: 10%;
-}
-
-.formalEducation2
-{
 }
