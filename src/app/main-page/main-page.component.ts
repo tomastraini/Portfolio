@@ -69,6 +69,9 @@ export class MainPageComponent implements OnInit {
     console.log("HEIGHT: " + screenheight);
     console.log("WIDTH: " + screenwidth);
     console.log("RELATION: " + (screenheight / screenwidth));
+    var condition = (screenheight / screenwidth) == 1.7777777777777777 ||
+    (screenheight / screenwidth) == 0.53125 || screenwidth == 1280 || screenwidth == 1920;
+    console.log("CONDITION: " + condition);
     
     if((screenheight / screenwidth) == 1.7777777777777777 ||
       (screenheight / screenwidth) == 0.53125 || screenwidth == 1280 || screenwidth == 1920)
