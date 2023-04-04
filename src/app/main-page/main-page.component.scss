@@ -7,7 +7,7 @@
     margin-left: -250px;
     left: 250px;
     width: 250px;
-    background: rgba(24, 26, 27, 0.9);
+    background: #3f0d0c;
     position: fixed;
     height: 100%;
     overflow-y: auto;
@@ -151,10 +151,14 @@
   /* The typing effect */
   @keyframes typing {
     0% {
-      width: 0
+      width: 0%
     }
     30% {
-      width: 80%
+      width: 90%
+    }
+    100% {
+      width: 40%
+
     }
   }
   
@@ -189,12 +193,16 @@
   // TIMELINES
 
   .timeline {
-    border-left: 1px solid hsl(0, 0%, 90%);
+    border-left: 1px solid #3f0d0c;
     position: relative;
     list-style: none;
   }
   
   .timeline .timeline-item {
+    position: relative;
+  }
+
+  .timeline .timeline-item-end {
     position: relative;
   }
   
@@ -203,15 +211,31 @@
     display: block;
     top: 0;
   }
+
+  .timeline .timeline-item-end:after {
+    position: absolute;
+    display: block;
+    top: -500;
+  }
   
   .timeline .timeline-item:after {
-    background-color: hsl(0, 0%, 90%);
+    background-color: #3f0d0c;
     left: -38px;
     border-radius: 50%;
     height: 11px;
     width: 11px;
     content: "";
   }
+
+  .timeline .timeline-item-end:after {
+    background-color: #3f0d0c;
+    left: -38px;
+    border-radius: 50%;
+    height: 11px;
+    width: 11px;
+    content: "";
+  }
+
 
 
   .IcoColor
@@ -303,3 +327,67 @@
   {
     cursor: pointer;
   }
+
+  // FORCE DELETE TEXT DECORATION 
+  a{
+    text-decoration: none;
+  }
+
+
+  .text-elegant
+  {
+    color: #d9b061;
+  }
+
+  .text-blue-elegant
+  {
+    color: rgb(56, 72, 94);
+  }
+
+.loadingScreen
+{
+    padding-bottom: 50%;
+    margin-left: 45%;
+    margin-top: 20%;
+    font-size: large;
+    font-family: 'Open Sans', sans-serif;
+    position: fixed;
+}
+
+.mrl-5
+{
+  margin-left: -2%;
+}
+
+.educationDivide
+{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 0px;
+  align-items:flex-start;
+}
+
+.formalEducation
+{
+  display: inline-flex;
+  flex-direction: row;
+  margin-right: auto;
+}
+
+.formalEducation .timeline
+{
+  margin-top: 20%;
+  margin-left: -26%;
+}
+
+
+.formalEducation2
+{
+  display: inline-flex;
+  flex-direction: column;
+  margin-top: 10%;
+}
+
+.formalEducation2
+{
+}

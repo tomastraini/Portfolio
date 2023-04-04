@@ -1,29 +1,111 @@
+<!-- LOADING IMAGES -->
+<div  [hidden]="!imagesLoaded" class="loadingScreen">
+    <div class="spinner-border text-primary" role="status" >
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="text-dark mrl-5">Loading.{{ countImagesPoints }}</p>
+</div>
+
+<!-- ON IMAGES LOADED -->
+<div [hidden]="imagesLoaded">
 <!-- NAVBAR FOR PC -->
 <div id="sidebar-wrapper" *ngIf="!isPhone">
-    <ul class="sidebar-nav ml-2">
-        <li class="sidebar-brand mb-5 mt-2">
-          <img
-          src="{{ imgsrc2 }}"
-          alt="Loading..." height="100" width="100"
-          style="border-radius: 50%; border: 5px solid rgb(56, 72, 94);">
-          <a style="font-weight: 500;" class="text-white cursorPointer">
-            Tomás Traini
+  <ul class="sidebar-nav ml-2">
+      <li class="sidebar-brand mb-5 mt-2">
 
-          </a>
-        </li>
-        <li style="margin-top: 30%;" (click)="DoScroll('HomeAndAbout')">
+        <img
+        src="{{ imgsrc2 }}"
+        alt="Loading..." height="100" width="100"
+        style="border-radius: 50%; border: 5px solid #8d6f57"
+        [hidden]="imagesLoaded" (load)="loadImgs()">
+  
+        <a style="font-weight: 500;"
+        class="text-white cursorPointer"
+        
+        [ngStyle]="{'margin-top': !imagesLoaded ? '-5%' : '-15%' }">
+          Tomás Traini
+        </a>
+      </li>
+      <li style="margin-top: 30%;" (click)="DoScroll('HomeAndAbout')">
+        <a class="{{ HomeTextColor }} cursorPointer">
+          <i class="fa fa-home {{ HomeIcoColor }}"></i>
+          Home
+        </a>
+      </li>
+      <li (click)="DoScroll('HomeAndAbout')">
+        <a class="{{ AboutTextColor }} cursorPointer">
+          <i class="fa fa-user {{ AboutIcoColor }}" aria-hidden="true"></i>
+          About
+        </a>
+      </li>
+      <li (click)="DoScroll('Resume')">
+        <a class="{{ ResumeTextColor }} cursorPointer">
+          <i class="fa fa-file {{ ResumeIcoColor }}" aria-hidden="true"></i>
+          Resume
+        </a>
+      </li>
+      <li>
+        <a class="{{ PortfolioTextColor }} cursorPointer" >
+          <i class="fa fa-book {{ PortfolioIcoColor }}" aria-hidden="true"></i>
+          Portfolio
+        </a>
+      </li>
+      <li>
+        <br>
+        <br>
+        <br>
+      </li>
+      <li class="text-white">
+        <div class="cursorPointer" (click)="GoTo('https://github.com/tomastraini')">
+          <i class="fa fa-github text-white"></i> 
+          Github
+        </div>
+        <div class="cursorPointer" (click)="GoTo('https://www.linkedin.com/in/tomastraini/')">
+          <i class="fa fa-linkedin-square"></i> LinkedIn
+        </div>
+      </li>
+  </ul>
+</div>
+
+<!-- NAVBAR FOR PHONES -->
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" *ngIf="isPhone" style="background-color: #3f0d0c;">
+  <div class="container-fluid">
+    <img
+    src="{{ imgsrc2 }}"
+    alt="Loading..." height="100" width="100"
+    style="border-radius: 50%; border: 5px solid #8d6f57;"
+    [hidden]="imagesLoaded" (load)="loadImgs()">
+
+    <a style="font-weight: 500; margin-left: -20%;" class="text-white">
+      Tomás Traini
+      <br>
+      Portfolio
+    </a>
+    
+    <button class="navbar-toggler" type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation" (click)="collapseNavbar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li (click)="DoScroll('HomeAndAbout'); collapseNavbar()">
           <a class="{{ HomeTextColor }} cursorPointer">
             <i class="fa fa-home {{ HomeIcoColor }}"></i>
             Home
           </a>
         </li>
-        <li (click)="DoScroll('HomeAndAbout')">
+        <li (click)="DoScroll('HomeAndAbout'); collapseNavbar()">
           <a class="{{ AboutTextColor }} cursorPointer">
             <i class="fa fa-user {{ AboutIcoColor }}" aria-hidden="true"></i>
             About
           </a>
         </li>
-        <li (click)="DoScroll('Resume')">
+        <li (click)="DoScroll('Resume'); collapseNavbar()">
           <a class="{{ ResumeTextColor }} cursorPointer">
             <i class="fa fa-file {{ ResumeIcoColor }}" aria-hidden="true"></i>
             Resume
@@ -49,207 +131,298 @@
             <i class="fa fa-linkedin-square"></i> LinkedIn
           </div>
         </li>
-    </ul>
-  </div>
 
-  <!-- NAVBAR FOR PHONES -->
-
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" *ngIf="isPhone">
-    <div class="container-fluid">
-      <img
-      src="{{ imgsrc2 }}"
-      alt="Loading..." height="100" width="100"
-      style="border-radius: 50%; border: 5px solid rgb(56, 72, 94);">
-      <a style="font-weight: 500; margin-left: -20%;" class="text-white">
-        Tomás Traini
-        <br>
-        Portfolio
-      </a>
-      
-      <button class="navbar-toggler" type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false" aria-label="Toggle navigation" (click)="collapseNavbar()">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li (click)="DoScroll('HomeAndAbout')">
-            <a class="{{ HomeTextColor }} cursorPointer">
-              <i class="fa fa-home {{ HomeIcoColor }}"></i>
-              Home
-            </a>
-          </li>
-          <li (click)="DoScroll('HomeAndAbout')">
-            <a class="{{ AboutTextColor }} cursorPointer">
-              <i class="fa fa-user {{ AboutIcoColor }}" aria-hidden="true"></i>
-              About
-            </a>
-          </li>
-          <li (click)="DoScroll('Resume')">
-            <a class="{{ ResumeTextColor }} cursorPointer">
-              <i class="fa fa-file {{ ResumeIcoColor }}" aria-hidden="true"></i>
-              Resume
-            </a>
-          </li>
-          <li>
-            <a class="{{ PortfolioTextColor }} cursorPointer" >
-              <i class="fa fa-book {{ PortfolioIcoColor }}" aria-hidden="true"></i>
-              Portfolio
-            </a>
-          </li>
-          <li>
-            <br>
-            <br>
-            <br>
-          </li>
-          <li class="text-white">
-            <div class="cursorPointer" (click)="GoTo('https://github.com/tomastraini')">
-              <i class="fa fa-github text-white"></i> 
-              Github
-            </div>
-            <div class="cursorPointer" (click)="GoTo('https://www.linkedin.com/in/tomastraini/')">
-              <i class="fa fa-linkedin-square"></i> LinkedIn
-            </div>
-          </li>
-
-        </ul>
-      </div>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
 
-  <!-- Body -->
+<!-- Body -->
 
-  <div style="padding-top: 2%;" 
-  [ngStyle]="{'margin-left':isPhone === true ? '0%' : '20%' }"
-  [ngStyle]="{'margin-top':isPhone === true ? '30%' : '0%' }">
-  
-  <div id="AboutMe" class="{{ fadeInAbout }}">
-    <h1 style="color: rgb(56, 72, 94); font-weight:bold;">ABOUT ME</h1>
-    <p>
-      I am currently a Ssr. Fullstack developer working at PwC.
-      <br>
-      In the last 2 years i've been working in a set of projects which have given me a good and trustworthy
-      <br>
-      level of expertise in the matter, though i'm always trying to learn new and different ways to 
-      perform and to constantly improve my skills.
-    </p>
+<div style="padding-top: 2%;" 
+  [ngStyle]="{'margin-left':isPhone === true ? '0%' : '20%', 
+  'margin-top':isPhone === true ? '30%' : '0%'}" (click)="collapseNavbar()">
+  <hr>
 
-    <div >
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xl-6 col-lg-6 col-md-6" >
-            <img src="{{ imgsrc1 }}" alt="responsive webite" class="img-fluid">
-          </div>
-          <div class="col-xl-6 col-lg-6 col-md-6" style="border:1px solid #ddd">
-            <h2
-            style="color: rgb(56, 72, 94); font-weight:bold;"
-            class="{{ isPhone ? 'typewriterPhone' : 'typewriter' }}">
-              Fullstack developer
-            </h2>
-            <p>
-              I will be leaving all of my basic information below:
-              <br>
-              <br><i class="fa fa-chevron-right"></i> <b>Birthday</b>: 4th december 2000
-              <br><i class="fa fa-chevron-right"></i> <b>Phone</b>: +54 341-282-2237
-              <br><i class="fa fa-chevron-right"></i> <b>Country</b>: Argentina
-              <br><i class="fa fa-chevron-right"></i> <b>Degree</b>:
-              Post-secundary in Software development
-              <br><i class="fa fa-chevron-right"></i> <b>Email</b>: tomas.u.traini@gmail.com
-            </p>
-            <h2 style="color: rgb(56, 72, 94); font-weight:bold;" >
-              Technologies
-            </h2>
-            <p>
-              <br><i class="fa fa-chevron-right"></i> <b>Back-end</b>: <br>
-              <b>C# .Net (3.1+)</b> I have been through some of the most important architectures such as
-              DDD (Domain driven design), MVC, SOA (Service Oriented Architecture) and worked in multiple
-              projects with each, using from Asp.Net MVC to the latest API Rest with .Net core 6. 
+<div id="AboutMe" class="{{ fadeInAbout }}" >
+  <h1 style="color: rgb(56, 72, 94); font-weight:bold;">ABOUT ME
+  </h1>
 
-              <br>
-              <br><i class="fa fa-chevron-right"></i> <b>Front-end</b>: <br>
-              <b>Angular (6+)</b> I have worked with Angular from the version 6 upwards and have
-              knowledgement about the most widely used features of this framework, such as Pipelines for filters,
-              Materials, Angular routing, Event listeners, Parent and children variables passing,
-              HttpClient library and the uses of all of the Http methods
-              either async or not. I have also used known libraries such as HighCharts for graphics and
-              stuff.
+  <p>
+    I am currently a Ssr. Fullstack developer working at PwC.
+    <br>
+    In the last 2 years i've been working in a set of projects which have given me a good and trustworthy
+    <br>
+    level of expertise in the matter, though i'm always trying to learn new and different ways to 
+    perform and to constantly improve my skills.
+  </p>
 
-              <br>
-              <br><i class="fa fa-chevron-right"></i> <b>Database</b>: <br>
-              <b>SQL Server, MySQL</b> 
-              I possess knowledgement about database normalization and relationships, triggers,
-              Stored Procedures, functions, all of the select functions such as JOINs, WHERE,
-              ORDER BY, GROUP BY, COUNT(), etc.
-            </p>
-          </div>
+  <div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-6" >
+          <img [hidden]="imagesLoaded"
+          src="{{ imgsrc1 }}" alt="responsive webite" class="img-fluid"
+          (load)="loadImgs()">      
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-6"
+        style="border:1px solid #ddd; background-color: #d8d0c5; width: 49%;"
+        [ngStyle]="{
+          'width':isPhone === true ? '95%' : '49%',
+          'margin-left':isPhone === true ? '2.5%' : '0%'
+        }">
+          <h2
+          style="color: rgb(56, 72, 94); font-weight:bold;"
+          class="{{ isPhone ? 'typewriterPhone' : 'typewriter' }}">
+            Fullstack developer
+          </h2>
+          <p>
+            I will be leaving all of my basic information below:
+            <br>
+            <br><i class="fa fa-chevron-right"></i> <b>Birthday</b>: 4th december 2000
+            <br><i class="fa fa-chevron-right"></i> <b>Phone</b>: +54 341-282-2237
+            <br><i class="fa fa-chevron-right"></i> <b>Country</b>: Argentina
+            <br><i class="fa fa-chevron-right"></i> <b>Degree</b>:
+            Post-secondary in Software development
+            <br><i class="fa fa-chevron-right"></i> <b>Email</b>: tomas.u.traini@gmail.com
+          </p>
+          <h2 style="color: rgb(56, 72, 94); font-weight:bold;" >
+            Technologies
+          </h2>
+          <p>
+            <br><i class="fa fa-chevron-right"></i> <b>Back-end</b>: <br>
+            <b>C# .Net (3.1+)</b> I have been through some of the most important architectures such as
+            DDD (Domain driven design), MVC, SOA (Service Oriented Architecture) and worked in multiple
+            projects with each, using from Asp.Net MVC to the latest API Rest with .Net core 6. 
+
+            <br>
+            <br><i class="fa fa-chevron-right"></i> <b>Front-end</b>: <br>
+            <b>Angular (6+)</b> I have worked with Angular from the version 6 upwards and have
+            knowledgement about the most widely used features of this framework, such as Pipelines for filters,
+            Materials, Angular routing, Event listeners, Parent and children variables passing,
+            HttpClient library and the uses of all of the Http methods
+            either async or not. I have also used known libraries such as HighCharts for graphics and
+            stuff.
+
+            <br>
+            <br><i class="fa fa-chevron-right"></i> <b>Database</b>: <br>
+            <b>SQL Server, MySQL</b> 
+            I possess knowledgement about database normalization and relationships, triggers,
+            Stored Procedures, functions, all of the select functions such as JOINs, WHERE,
+            ORDER BY, GROUP BY, COUNT(), etc.
+          </p>
         </div>
       </div>
+    </div>
+
+  </div>
+</div>
+<hr>
+
+<!-- RESUME -->
+<div style="padding-top: 2%;" class="{{ fadeInResume }}" id="resume"
+[ngStyle]="{'margin-left':isPhone === true ? '5%' : '0%'}">
+  <h1 style="color: rgb(56, 72, 94); font-weight:bold;">RESUME</h1>
+
+
+  <section class="py-5">
+    <h3 style="color: rgb(14, 16, 19); font-weight:bold;">
+      Professional experience
+    </h3>
+    <ul class="timeline">
+      <li class="timeline-item mb-5">
+        <h5 class="fw-bold">
+          
+          Ssr. Software developer 
+        </h5>
+        <h5 class="fw-bold cursorPointer" (click)="GoTo('https://www.pwc.com/gx/en')">
+          <img src="{{ imgpwc }}" height="50" width="50" 
+          class="border rounded border-secondary"
+            (load)="loadImgs()">
+          PwC
+        </h5>
+        <p class="text-muted mb-2 fw-bold">1th January 2023 - *</p>
+        <p class="text-muted">
+          The main tasks i perform as a software developer are the development, testing and <br> 
+          improvement of the features within the application (That includes the C# side and <br>
+          also the Angular). I am also part of a team that specializes on the correction of <br>
+          code vulnerabilities that can expose the websites to exploits and make it unsafe.
+        </p>
+      </li>
+
+      <li class="timeline-item mb-5">
+        
+        <h5 class="fw-bold"> 
+          
+          Associate Software developer
+        </h5>
+        <h5 class="fw-bold cursorPointer" (click)="GoTo('https://www.pwc.com/gx/en')">
+          <img src="{{ imgpwc }}" height="50" width="50"
+          class="border rounded border-secondary"
+            (load)="loadImgs()">
+          PwC
+        </h5>
+        <p class="text-muted mb-2 fw-bold">8th August 2022 - 31st December 2022</p>
+        <p class="text-muted">
+          Work at and co-lead at a team specialized at fixing web applications
+          security issues, using for this purpose specialized tools and researching 
+          the found issues on my own. I also develop new application features and implement 
+          accessibility improvements for clients residing at the US.
+
+        </p>
+      </li>
+
+      <li class="timeline-item mb-5">
+        <h5 class="fw-bold">
+          
+          Software developer
+        </h5>
+        <h5 class="fw-bold cursorPointer" (click)="GoTo('https://www.ingenea.com.ar/')">
+          <img src="{{ imgingenea }}" height="50" width="125"
+          class="border rounded border-secondary" (load)="loadImgs()">
+          Ingenea
+        </h5>
+        <p class="text-muted mb-2 fw-bold">1st January 2022 - 7th August 2022</p>
+        <p class="text-muted">
+          Development of new features to clients residing at Argentina, Mexico and Brazil,
+          and some of my responsabilities were the development, engineering and maintenance of
+          new endpoints, services, repositories and connecting them to the database, while also
+          taking care of the databases SPs, which were crucial for the projects i worked in.
+        </p>
+      </li>
+
+      <li class="timeline-item mb-5">
+        <h5 class="fw-bold">Software developer</h5>
+        <h5 class="fw-bold">Freelance</h5>
+        <p class="text-muted mb-2 fw-bold">14th June 2021 - 31st December 2021</p>
+        <p class="text-muted">
+          I have worked developing applications for small companies looking for a software
+          dedicated towards the administration of their havings.
+        </p>
+
+      </li>
+      <li class="timeline-item-end mb-5" [ngStyle]="{'margin-top':isPhone === true ? '-15%' : '-5%'}">
+      </li>
+    </ul>
+
+    <!-- DIVIDE THE EDUCATION  -->
+
+    <div class="{{isPhone === true ? '' : 'educationDivide' }}">
+      <div class="formalEducation">
+        <h3 style="color: rgb(14, 16, 19); font-weight:bold; " class="pt-5" >
+          Education
+        </h3>
+        <ul class="timeline">
+    
+          <li class="timeline-item mb-5">
+            <h5 class="fw-bold" >Software developer degree</h5>
+            <p class="fw-bold cursorPointer text-blue-elegant "
+            (click)="GoTo('https://institutozonaoeste.edu.ar/')">
+                <img src="{{ imgizo }}" height="50" width="50" 
+              class="cursorPointer border rounded border-secondary" (load)="loadImgs()">
+                Instituto zona oeste
+            </p>
+            
+            <p class="text-muted mb-2 fw-bold">6th march 2019 - 10th december 2023</p>
+          </li>
+    
+
+    
+          <li class="timeline-item mb-5">
+            <h5 class="fw-bold" >Bachelor's in economics and finance</h5>
+            <p class="fw-bold cursorPointer text-blue-elegant "
+            (click)="GoTo('https://institutozonaoeste.edu.ar/')">
+                <img src="{{ imgizo }}" height="50" width="50" 
+              class="cursorPointer border rounded border-secondary" (load)="loadImgs()">
+                Instituto zona oeste
+            </p>
+            
+            <p class="text-muted mb-2 fw-bold">14th march 2014 - 28th november 2018</p>
+          </li>
+    
+          
+          <li class="timeline-item-end mb-5"
+          [ngStyle]="{'margin-top':isPhone === true ? '-15%' : '-5%'}">
+          </li>
+        </ul>
+      </div>
+
+      <div class="formalEducation2">
+        <h3 style="color: rgb(14, 16, 19); font-weight:bold; " class="" >
+          Courses and certifications
+        </h3>
+        <ul class="timeline">
+
+          <li class="timeline-item mb-5">
+            <h5 class="fw-bold" >C2 English certification (79/100)</h5>
+            <p class="fw-bold cursorPointer text-blue-elegant "
+            (click)="GoTo('https://www.efset.org/cert/rEXkD8')">
+                <img src="{{ imgefset }}" height="50" width="50" 
+              class="cursorPointer border rounded border-secondary" (load)="loadImgs()">
+                EF SET 50
+            </p>
+            
+            <p class="text-muted mb-2 fw-bold">6th march 2019 - 10th december 2023</p>
+          </li>
+
+          <li class="timeline-item mb-5">
+            <h5 class="fw-bold" >Deutsch Sprache A2</h5>
+            <p class="fw-bold cursorPointer text-blue-elegant "
+            (click)="GoTo('https://goetherosario.org/')">
+                <img src="{{ imggoethe }}" height="50" width="120" 
+              class="cursorPointer border rounded border-secondary" (load)="loadImgs()">
+                Goethe Institut Rosario
+            </p>
+            <p class="text-muted mb-2 fw-bold">14th march 2022 - *</p>
+          </li>
+    
+          <li class="timeline-item mb-5">
+            <h5 class="fw-bold" >GeneXus 17 Junior Analyst</h5>
+            <p class="fw-bold cursorPointer text-blue-elegant "
+            (click)="GoTo('https://training.genexus.com/en/learning/certifications/certified-technicians?data=traini')">
+                <img src="{{ imggenexus }}" height="50" width="50" 
+              class="cursorPointer border rounded border-secondary" (load)="loadImgs()">
+                Genexus Training
+            </p>
+            
+            <p class="text-muted mb-2 fw-bold">6th march 2019 - 10th december 2023</p>
+          </li>
+
+          <li class="timeline-item mb-5">
+            <h5 class="fw-bold" >English B2.2 Test</h5>
+            <p class="fw-bold cursorPointer text-blue-elegant "
+            (click)="GoTo('https://www.trinitycollege.com/')">
+                <img src="{{ imgtrinity }}" height="50" width="100" 
+              class="cursorPointer border rounded border-secondary" (load)="loadImgs()">
+                Trinity College of London
+            </p>
+            
+            <p class="text-muted mb-2 fw-bold">28th november 2018</p>
+          </li>
+    
+          
+          <li class="timeline-item-end mb-5"
+          [ngStyle]="{'margin-top':isPhone === true ? '-15%' : '-5%'}">
+          </li>
+        </ul>
+      </div>
 
     </div>
-    <hr>
-  </div>
-
-  <!-- RESUME -->
-
-  <div style="padding-top: 2%;" class="{{ fadeInResume }}" id="resume">
-    <h1 style="color: rgb(56, 72, 94); font-weight:bold;">RESUME</h1>
-
-    <section class="py-5">
-      <ul class="timeline">
-        <li class="timeline-item mb-5">
-          <h5 class="fw-bold">Ssr. Software developer</h5>
-          <h5 class="fw-bold">PwC</h5>
-          <p class="text-muted mb-2 fw-bold">1th January 2023</p>
-          <p class="text-muted">
-            The main tasks i perform as a software developer are the development, testing and <br> 
-            improvement of the features within the application (That includes the C# side and <br>
-            also the Angular). I am also part of a team that specializes on the correction of <br>
-            code vulnerabilities that can expose the websites to exploits and make it unsafe.
-          </p>
-        </li>
-
-        <li class="timeline-item mb-5">
-          <h5 class="fw-bold">Associate Software developer</h5>
-          <h5 class="fw-bold">PwC</h5>
-          <p class="text-muted mb-2 fw-bold">8th August 2022</p>
-          <p class="text-muted">
-            Work at and co-lead at a team specialized at fixing web applications
-            security issues, using for this purpose specialized tools and researching 
-            the found issues on my own. I also develop new application features and implement 
-            accessibility improvements for clients residing at the US.
-
-          </p>
-        </li>
-
-        <li class="timeline-item mb-5">
-          <h5 class="fw-bold">Software developer</h5>
-          <h5 class="fw-bold">Ingenea</h5>
-          <p class="text-muted mb-2 fw-bold">24 June 2020</p>
-          <p class="text-muted">
-            Development of new features to clients residing at Argentina, Mexico and Brazil,
-            and some of my responsabilities were the development, engineering and maintenance of
-            new endpoints, services, repositories and connecting them to the database, while also
-            taking care of the databases SPs, which were crucial for the projects i worked in.
-          </p>
-        </li>
-
-        <li class="timeline-item mb-5">
-          <h5 class="fw-bold">Software developer</h5>
-          <h5 class="fw-bold">Freelance</h5>
-          <p class="text-muted mb-2 fw-bold">15 October 2020</p>
-          <p class="text-muted">
-            I have worked developing applications for small companies looking for a software
-            dedicated towards the administration of their havings.
-          </p>
-        </li>
-      </ul>
-    </section>
-  </div>
-
+    
+  </section>
 
 </div>
-  
+<hr>
+
+
+
+<div style="padding-top: 2%;" class="{{ fadeInResume }}" id="portfolio"
+[ngStyle]="{'margin-left':isPhone === true ? '5%' : '0%'}">
+  <h1 style="color: rgb(56, 72, 94); font-weight:bold;">PORTFOLIO</h1>
+
+</div>
+</div>
+
+</div>
