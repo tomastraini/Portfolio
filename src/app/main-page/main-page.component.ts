@@ -52,6 +52,10 @@ export class MainPageComponent implements OnInit {
   imgefset  = "https://www.efset.org/cert/6ea6771479ceeade5f025fb16ff71264.svg"
   imgPoD  = "https://policyondemand.pwc.com/Assets/images/PoD-logo-001.jpg"
 
+  PDFLink  = this.environment == "dev" ? 
+  "../../assets/My_CV_2023.pdf" : 
+  "/Portfolio/assets/My_CV_2023.pdf"
+
   countImages = 0;
   countImagesPoints = "";
 

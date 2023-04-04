@@ -184,12 +184,13 @@
           <p>
             I will be leaving all of my basic information below:
             <br>
+            <br><i class="fa fa-chevron-right"></i> <b>Degree</b>:
+              Post-secondary in Software development
             <br><i class="fa fa-chevron-right"></i> <b>Birthday</b>: 4th december 2000
             <br><i class="fa fa-chevron-right"></i> <b>Phone</b>: +54 341-282-2237
             <br><i class="fa fa-chevron-right"></i> <b>Email</b>: tomas.u.traini@gmail.com
             <br><i class="fa fa-chevron-right"></i> <b>Country</b>: Argentina
-            <br><i class="fa fa-chevron-right"></i> <b>Degree</b>:
-            Post-secondary in Software development
+            
           </p>
           <h2 style="color: rgb(56, 72, 94); font-weight:bold;" >
             Technologies
@@ -227,7 +228,16 @@
 <!-- RESUME -->
 <div style="padding-top: 2%;" class="{{ fadeInResume }}" id="resume"
 [ngStyle]="{'margin-left':isPhone === true ? '5%' : '0%'}">
-  <h1 style="color: rgb(56, 72, 94); font-weight:bold;">RESUME</h1>
+  <h1 style="font-weight:bold;" class="text-blue-elegant">RESUME</h1>
+
+  <div>
+    <h4 class="text-blue-elegant">
+      Look CV
+    </h4>
+    <button class="btn btn-danger" (click)="GoTo(PDFLink)">
+      <i class="fa fa-eye"></i>
+    </button>
+  </div>
 
 
   <section class="py-5">
