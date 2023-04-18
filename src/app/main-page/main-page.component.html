@@ -7,7 +7,14 @@
 </div>
 
 <!-- ON IMAGES LOADED -->
-<div [hidden]="imagesLoaded">
+<div [hidden]="imagesLoaded"
+[ngStyle]="
+{
+  'width':isPhone === true ? '90%' : '80%',
+  'margin-left':isPhone === true ? '5%' : '20%',
+  'overflow-x':isPhone === true ? 'hidden' : ''
+}"
+class="{{ isPhone === true ? 'phoneBody' : '' }}">
 <!-- NAVBAR FOR PC -->
 <div id="sidebar-wrapper" *ngIf="!isPhone">
   <ul class="sidebar-nav ml-2">
@@ -71,7 +78,8 @@
 
 <!-- NAVBAR FOR PHONES -->
 
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" *ngIf="isPhone" style="background-color: #3f0d0c;">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top navbarPhone"
+*ngIf="isPhone" style="background-color: #3f0d0c;">
   <div class="container-fluid">
     <img
     src="{{ imgsrc2 }}"
@@ -142,9 +150,8 @@
 
 <!-- Body -->
 
-<div style="padding-top: 2%;" 
-  [ngStyle]="{'margin-left':isPhone === true ? '0%' : '20%', 
-  'margin-top':isPhone === true ? '30%' : '0%'}" (click)="collapseNavbar()">
+<div style="padding-top: 2%; "
+class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
   <hr>
 
 <div id="AboutMe" class="{{ fadeInAbout }}">
@@ -226,105 +233,113 @@
 <hr>
 
 <!-- RESUME -->
-<div style="padding-top: 2%;" class="{{ fadeInResume }}" id="resume"
-[ngStyle]="{'margin-left':isPhone === true ? '5%' : '0%'}">
-  <h1 style="font-weight:bold;" class="text-blue-elegant">RESUME</h1>
+<div style="padding-top: 2%;" class="{{ fadeInResume }} {{ isPhone === true ? 'resumePhone' : 'resumePC' }}" id="resume">
+  <div class="introduction">
+    <h1 style="font-weight:bold;" class="text-blue-elegant">RESUME</h1>
 
-  <div>
-    <h4 class="text-blue-elegant">
-      Look CV
-    </h4>
-    <button class="btn btn-danger" (click)="GoTo(PDFLink)">
-      <i class="fa fa-eye"></i>
-    </button>
+    <div>
+      <h4 class="text-blue-elegant">
+        Look CV
+      </h4>
+      <button class="btn btn-danger" (click)="GoTo(PDFLink)">
+        <i class="fa fa-eye"></i>
+      </button>
+    </div>
   </div>
 
 
   <section class="py-5">
-    <h3 style="color: rgb(14, 16, 19); font-weight:bold;">
-      Professional experience
-    </h3>
-    <ul class="timeline">
-      <li class="timeline-item mb-5">
-        <h5 class="fw-bold">
-          
-          Ssr. Software developer 
-        </h5>
-        <h5 class="fw-bold cursorPointer" (click)="GoTo('https://www.pwc.com/gx/en')">
-          <img src="{{ imgpwc }}" height="50" width="50" 
-          class="border rounded border-secondary"
-            (load)="loadImgs()">
-          PwC
-        </h5>
-        <p class="text-muted mb-2 fw-bold">1th January 2023 - *</p>
-        <p class="text-muted">
-          The main tasks i perform as a software developer are the development, testing and <br> 
-          improvement of the features within the application (That includes the C# side and <br>
-          also the Angular). I am also part of a team that specializes on the correction of <br>
-          code vulnerabilities that can expose the websites to exploits and make it unsafe.
-        </p>
-      </li>
-
-      <li class="timeline-item mb-5">
-        
-        <h5 class="fw-bold"> 
-          
-          Associate Software developer
-        </h5>
-        <h5 class="fw-bold cursorPointer" (click)="GoTo('https://www.pwc.com/gx/en')">
-          <img src="{{ imgpwc }}" height="50" width="50"
-          class="border rounded border-secondary"
-            (load)="loadImgs()">
-          PwC
-        </h5>
-        <p class="text-muted mb-2 fw-bold">8th August 2022 - 31st December 2022</p>
-        <p class="text-muted">
-          Work at and co-lead at a team specialized at fixing web applications
-          security issues, using for this purpose specialized tools and researching 
-          the found issues on my own. I also develop new application features and implement 
-          accessibility improvements for clients residing at the US.
-
-        </p>
-      </li>
-
-      <li class="timeline-item mb-5">
-        <h5 class="fw-bold">
-          
-          Software developer
-        </h5>
-        <h5 class="fw-bold cursorPointer" (click)="GoTo('https://www.ingenea.com.ar/')">
-          <img src="{{ imgingenea }}" height="50" width="125"
-          class="border rounded border-secondary" (load)="loadImgs()">
-          Ingenea
-        </h5>
-        <p class="text-muted mb-2 fw-bold">1st January 2022 - 7th August 2022</p>
-        <p class="text-muted">
-          Development of new features to clients residing at Argentina, Mexico and Brazil,
-          and some of my responsabilities were the development, engineering and maintenance of
-          new endpoints, services, repositories and connecting them to the database, while also
-          taking care of the databases SPs, which were crucial for the projects i worked in.
-        </p>
-      </li>
-
-      <li class="timeline-item mb-5">
-        <h5 class="fw-bold">Software developer</h5>
-        <h5 class="fw-bold">Freelance</h5>
-        <p class="text-muted mb-2 fw-bold">14th June 2021 - 31st December 2021</p>
-        <p class="text-muted">
-          I have worked developing applications for small companies looking for a software
-          dedicated towards the administration of their havings.
-        </p>
-
-      </li>
-      <li class="timeline-item-end mb-5" [ngStyle]="{'margin-top':isPhone === true ? '-15%' : '-5%'}">
-      </li>
-    </ul>
+    <!-- DIV FOR PROFFESSIONAL EXPERIENCE  -->
+    <div class="{{isPhone === true ? 'TimelineDividePhone' : 'timelineDivide' }}">
+      <div>
+        <h3 style="color: rgb(14, 16, 19); font-weight:bold;">
+          Professional experience
+        </h3>
+        <ul class="{{isPhone === true ? 'timelinePhone' : 'timeline' }}">
+          <li class="timeline-item mb-5">
+            <h5 class="fw-bold">
+              
+              Ssr. Software developer 
+            </h5>
+            <h5 class="fw-bold cursorPointer" (click)="GoTo('https://www.pwc.com/gx/en')">
+              <img src="{{ imgpwc }}" height="50" width="50" 
+              class="border rounded border-secondary imageAnimation5050"
+                (load)="loadImgs()">
+              PwC
+            </h5>
+            <p class="text-muted mb-2 fw-bold">1th January 2023 - *</p>
+            <p class="text-muted">
+              The main tasks i perform as a software developer are the development, testing and <br> 
+              improvement of the features within the application (That includes the C# side and <br>
+              also the Angular). I am also part of a team that specializes on the correction of <br>
+              code vulnerabilities that can expose the websites to exploits and make it unsafe.
+            </p>
+          </li>
+    
+          <li class="timeline-item mb-5">
+            
+            <h5 class="fw-bold"> 
+              
+              Associate Software developer
+            </h5>
+            <h5 class="fw-bold cursorPointer" (click)="GoTo('https://www.pwc.com/gx/en')">
+              <img src="{{ imgpwc }}" height="50" width="50"
+              class="border rounded border-secondary imageAnimation5050"
+                (load)="loadImgs()">
+              PwC
+            </h5>
+            <p class="text-muted mb-2 fw-bold">8th August 2022 - 31st December 2022</p>
+            <p class="text-muted">
+              Work at and co-lead at a team specialized at fixing web applications
+              security issues, using for this purpose specialized tools and researching 
+              the found issues on my own. I also develop new application features and implement 
+              accessibility improvements for clients residing at the US.
+    
+            </p>
+          </li>
+    
+          <li class="timeline-item mb-5 ">
+            <h5 class="fw-bold">
+              
+              Software developer
+            </h5>
+            <h5 class="fw-bold cursorPointer" (click)="GoTo('https://www.ingenea.com.ar/')">
+              <img src="{{ imgingenea }}" height="50" width="125"
+              class="border rounded border-secondary imageAnimation5050" (load)="loadImgs()">
+              Ingenea
+            </h5>
+            <p class="text-muted mb-2 fw-bold">1st January 2022 - 7th August 2022</p>
+            <p class="text-muted">
+              Development of new features to clients residing at Argentina, Mexico and Brazil,
+              and some of my responsabilities were the development, engineering and maintenance of
+              new endpoints, services, repositories and connecting them to the database, while also
+              taking care of the databases SPs, which were crucial for the projects i worked in.
+            </p>
+          </li>
+    
+          <li class="timeline-item mb-5">
+            <h5 class="fw-bold">Software developer</h5>
+            <h5 class="fw-bold">Freelance</h5>
+            <p class="text-muted mb-2 fw-bold">14th June 2021 - 31st December 2021</p>
+            <p class="text-muted">
+              I have worked developing applications for small companies looking for a software
+              dedicated towards the administration of their havings.
+            </p>
+    
+          </li>
+          <li class="timeline-item-end mb-5"
+          [ngStyle]="{'margin-top':isPhone === true ? '-19%' : '-10%'}">
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <hr class="{{isPhone === true ? 'hrforPhone' : 'hrforPC' }}">
 
     <!-- DIVIDE THE EDUCATION  -->
-
-    <div class="{{isPhone === true ? '' : 'educationDivide' }}">
-      <div class="formalEducation">
-        <h3 style="color: rgb(14, 16, 19); font-weight:bold; " class="pt-5" >
+    <div class="{{isPhone === true ? 'TimelineDividePhone' : 'timelineDivide' }}">
+      <div>
+        <h3 style="color: rgb(14, 16, 19); font-weight:bold;">
           Education
         </h3>
         <ul class="{{isPhone === true ? 'timelinePhone' : 'timeline' }}">
@@ -334,7 +349,7 @@
             <p class="fw-bold cursorPointer text-blue-elegant "
             (click)="GoTo('https://institutozonaoeste.edu.ar/')">
                 <img src="{{ imgizo }}" height="50" width="50" 
-              class="cursorPointer border rounded border-secondary" (load)="loadImgs()">
+              class="cursorPointer border rounded border-secondary imageAnimation5050" (load)="loadImgs()">
                 Instituto zona oeste
             </p>
             
@@ -348,7 +363,7 @@
             <p class="fw-bold cursorPointer text-blue-elegant "
             (click)="GoTo('https://institutozonaoeste.edu.ar/')">
                 <img src="{{ imgizo }}" height="50" width="50" 
-              class="cursorPointer border rounded border-secondary" (load)="loadImgs()">
+              class="cursorPointer border rounded border-secondary imageAnimation5050" (load)="loadImgs()">
                 Instituto zona oeste
             </p>
             
@@ -357,13 +372,14 @@
     
           
           <li class="timeline-item-end mb-5"
-          [ngStyle]="{'margin-top':isPhone === true ? '-15%' : '-5%'}">
+          [ngStyle]="{'margin-top':isPhone === true ? '-19%' : '-10%'}">
           </li>
         </ul>
       </div>
 
-      <div class="formalEducation2">
-        <h3 style="color: rgb(14, 16, 19); font-weight:bold; " class="" >
+      <div>
+        <h3 style="color: rgb(14, 16, 19); font-weight:bold; "
+        class="{{isPhone === true ? 'formal2Phonetitle' : '' }}" >
           Courses and certifications
         </h3>
         <ul class="timeline">
@@ -373,7 +389,7 @@
             <p class="fw-bold cursorPointer text-blue-elegant "
             (click)="GoTo('https://www.efset.org/cert/rEXkD8')">
                 <img src="{{ imgefset }}" height="50" width="50" 
-              class="cursorPointer border rounded border-secondary" (load)="loadImgs()">
+              class="cursorPointer border rounded border-secondary imageAnimation5050" (load)="loadImgs()">
                 EF SET 50
             </p>
             
@@ -385,7 +401,7 @@
             <p class="fw-bold cursorPointer text-blue-elegant "
             (click)="GoTo('https://goetherosario.org/')">
                 <img src="{{ imggoethe }}" height="50" width="120" 
-              class="cursorPointer border rounded border-secondary" (load)="loadImgs()">
+              class="cursorPointer border rounded border-secondary imageAnimation5050" (load)="loadImgs()">
                 Goethe Institut Rosario
             </p>
             <p class="text-muted mb-2 fw-bold">14th march 2022 - *</p>
@@ -396,7 +412,7 @@
             <p class="fw-bold cursorPointer text-blue-elegant "
             (click)="GoTo('https://training.genexus.com/en/learning/certifications/certified-technicians?data=traini')">
                 <img src="{{ imggenexus }}" height="50" width="50" 
-              class="cursorPointer border rounded border-secondary" (load)="loadImgs()">
+              class="cursorPointer border rounded border-secondary imageAnimation5050" (load)="loadImgs()">
                 Genexus Training
             </p>
             
@@ -408,7 +424,7 @@
             <p class="fw-bold cursorPointer text-blue-elegant "
             (click)="GoTo('https://www.trinitycollege.com/')">
                 <img src="{{ imgtrinity }}" height="50" width="100" 
-              class="cursorPointer border rounded border-secondary" (load)="loadImgs()">
+              class="cursorPointer border rounded border-secondary imageAnimation5050" (load)="loadImgs()">
                 Trinity College of London
             </p>
             
@@ -417,7 +433,7 @@
     
           
           <li class="timeline-item-end mb-5"
-          [ngStyle]="{'margin-top':isPhone === true ? '-15%' : '-5%'}">
+          [ngStyle]="{'margin-top':isPhone === true ? '-19%' : '-10%'}">
           </li>
         </ul>
       </div>
@@ -427,9 +443,7 @@
   </section>
 
 </div>
-<hr>
-
-
+  <hr class="{{isPhone === true ? 'hrforPhone' : 'hrforPC' }}">
 
   <div style="padding-top: 2%;" class="{{ fadeInResume }}" id="portfolio"
   [ngStyle]="{'margin-left':isPhone === true ? '5%' : '0%'}">
@@ -439,7 +453,7 @@
     </p>
     <div class="container">
       <div class="row mb-5">
-        <div class="col text-dark border border-dark rounded cursorPointer"
+        <div class="col text-dark border border-dark rounded cursorPointer imageAnimation5050"
         (click)="GoTo('https://policyondemand.pwc.com/')">
           Policy on demand
           <img src="{{ imgPoD }}" height="50" width="100" 

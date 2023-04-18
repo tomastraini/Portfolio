@@ -2,444 +2,559 @@
     padding-left: 250px;
     transition: all 0.4s ease 0s;
   }
-  
-  #sidebar-wrapper {
-    margin-left: -250px;
-    left: 250px;
-    width: 250px;
-    background: #3f0d0c;
-    position: fixed;
-    height: 100%;
-    overflow-y: auto;
-    z-index: 1000;
-    transition: all 0.4s ease 0s;
-  }
-  
-  #page-content-wrapper {
-    width: 100%;
-  }
-  
-  .sidebar-nav {
-    position: absolute;
-    top: 0;
-    width: 250px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .sidebar-nav li {
-    line-height: 40px;
-    text-indent: 20px;
-  }
-  
-  .sidebar-nav li a {
-    color: #999999;
-    display: block;
-    text-decoration: none;
-  }
-  
-  .sidebar-nav li a:hover {
-    color: #fff;
-    background: rgba(255,255,255,0.2);
-    text-decoration: none;
-  }
-  
-  .sidebar-nav li a:active,
-  .sidebar-nav li a:focus {
-    text-decoration: none;
-  }
-  
-  .sidebar-nav > .sidebar-brand {
-    height: 65px;
-    line-height: 60px;
-    font-size: 18px;
-  }
-  
-  .sidebar-nav > .sidebar-brand a {
-    color: #999999;
-  }
-  
-  .sidebar-nav > .sidebar-brand a:hover {
-    color: #fff;
-    background: none;
-  }
-  
-  .content-header {
-    height: 65px;
-    line-height: 65px;
-  }
-  
-  .content-header h1 {
-    margin: 0;
-    margin-left: 20px;
-    line-height: 65px;
-    display: inline-block;
-  }
-  
-  #menu-toggle {
-    display: none;
-  }
-  
-  .inset {
-    padding: 20px;
-  }
-  
-  @media (max-width:767px) {
-  
-  #wrapper {
-    padding-left: 0;
-  }
-  
-  #sidebar-wrapper {
-    left: 0;
-  }
-  
-  #wrapper.active {
-    position: relative;
-    left: 250px;
-  }
-  
-  #wrapper.active #sidebar-wrapper {
-    left: 250px;
-    width: 250px;
-    transition: all 0.4s ease 0s;
-  }
-  
-  #menu-toggle {
-    display: inline-block;
-  }
-  
-  .inset {
-    padding: 15px;
-  }
-  
-  }
+#sidebar-wrapper {
+  margin-left: -250px;
+  left: 250px;
+  width: 250px;
+  background: #3f0d0c;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: all 0.4s ease 0s;
+}
 
-  
+#page-content-wrapper {
+  width: 100%;
+}
 
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
-  // TYPEWRITER EFFECT 
+.sidebar-nav li {
+  line-height: 40px;
+  text-indent: 20px;
+}
 
-  .typewriter {
-    overflow: hidden; /* Ensures the content is not revealed until the animation */
-    border-right: .05em solid rgb(56, 72, 94); /* The typwriter cursor */
-    white-space: nowrap; /* Keeps the content on a single line */
-    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-    letter-spacing: .15em; /* Adjust as needed */
-    width: 80%;
-    animation: 
-      typing 6s steps(40, end) infinite,
-      blink-caret 1s step-end infinite;
+.sidebar-nav li a {
+  color: #999999;
+  display: block;
+  text-decoration: none;
+}
 
-  }
-  
-  .typewriterPhone {
-    overflow: hidden; /* Ensures the content is not revealed until the animation */
-    border-right: .05em solid rgb(56, 72, 94); /* The typwriter cursor */
-    white-space: nowrap; /* Keeps the content on a single line */
-    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-    letter-spacing: .15em; /* Adjust as needed */
-    width:85%;
-    animation: 
-      typing 6s steps(40, end) infinite,
-      blink-caret 1s step-end infinite;
+.sidebar-nav li a:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.2);
+  text-decoration: none;
+}
 
-  }
-  
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
 
-  /* The typing effect */
-  @keyframes typing {
-    0% {
-      width: 0%
-    }
-    30% {
-      width: 90%
-    }
-    100% {
-      width: 40%
+.sidebar-nav > .sidebar-brand {
+  height: 65px;
+  line-height: 60px;
+  font-size: 18px;
+}
 
-    }
-  }
-  
-  /* The typewriter cursor effect */
-  @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: rgb(56, 72, 94); }
-  }
+.sidebar-nav > .sidebar-brand a {
+  color: #999999;
+}
 
+.sidebar-nav > .sidebar-brand a:hover {
+  color: #fff;
+  background: none;
+}
 
-  // FOR PUTTING TEXT OVER IMAGE
+.content-header {
+  height: 65px;
+  line-height: 65px;
+}
 
-  .container {
-    position: relative;
-    text-align: center;
-    color: white;
-  }
+.content-header h1 {
+  margin: 0;
+  margin-left: 20px;
+  line-height: 65px;
+  display: inline-block;
+}
 
-  .centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+#menu-toggle {
+  display: none;
+}
 
-  .text-decoration-underline
-  {
-    text-decoration-color:  #149ddd !important;
-  }
+.inset {
+  padding: 20px;
+}
 
+@media (max-width:767px) {
 
-  // TIMELINES
+#wrapper {
+  padding-left: 0;
+}
 
-  .timeline {
-    border-left: 1px solid #3f0d0c;
-    position: relative;
-    list-style: none;
-  }
-  
-  .timeline .timeline-item {
-    position: relative;
-  }
+#sidebar-wrapper {
+  left: 0;
+}
 
-  .timeline .timeline-item-end {
-    position: relative;
-  }
-  
-  .timeline .timeline-item:after {
-    position: absolute;
-    display: block;
-    top: 0;
-  }
+#wrapper.active {
+  position: relative;
+  left: 250px;
+}
 
-  .timeline .timeline-item-end:after {
-    position: absolute;
-    display: block;
-    top: -500;
-  }
-  
-  .timeline .timeline-item:after {
-    background-color: #3f0d0c;
-    left: -38px;
-    border-radius: 50%;
-    height: 11px;
-    width: 11px;
-    content: "";
-  }
+#wrapper.active #sidebar-wrapper {
+  left: 250px;
+  width: 250px;
+  transition: all 0.4s ease 0s;
+}
 
-  .timeline .timeline-item-end:after {
-    background-color: #3f0d0c;
-    left: -38px;
-    border-radius: 50%;
-    height: 11px;
-    width: 11px;
-    content: "";
-  }
+#menu-toggle {
+  display: inline-block;
+}
 
-  // TIMELINE FOR PHONES 
+.inset {
+  padding: 15px;
+}
 
-  .timelinePhone
-  {
-    border-left: 1px solid #3f0d0c;
-    position: relative;
-    list-style: none;
-    margin-top: 25%;
-    margin-left: -29.8%;
-  }
-
-  .timelinePhone .timeline-item {
-    position: relative;
-  }
-
-  .timelinePhone .timeline-item-end {
-    position: relative;
-  }
-  
-  .timelinePhone .timeline-item:after {
-    position: absolute;
-    display: block;
-    top: 0;
-  }
-
-  .timelinePhone .timeline-item-end:after {
-    position: absolute;
-    display: block;
-    top: -500;
-  }
-  
-  .timelinePhone .timeline-item:after {
-    background-color: #3f0d0c;
-    left: -38px;
-    border-radius: 50%;
-    height: 11px;
-    width: 11px;
-    content: "";
-  }
-
-  .timelinePhone .timeline-item-end:after {
-    background-color: #3f0d0c;
-    left: -38px;
-    border-radius: 50%;
-    height: 11px;
-    width: 11px;
-    content: "";
-  }
-
-  // END OF TIMELINE FOR PHONES 
-
-
-  .educationDivide
-  {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 0px;
-    align-items:flex-start;
-  }
-  
-  
-  
-  .formalEducation
-  {
-    display: inline-flex;
-    flex-direction: row;
-    margin-right: auto;
-  }
-  
-  .formalEducation .timeline
-  {
-    margin-top: 20%;
-    margin-left: -26%;
-  }
-  
-  
-  .formalEducation2
-  {
-    display: inline-flex;
-    flex-direction: column;
-    margin-top: 10.2%;
-  }
-  
-  
+}
 
 
 
-  .IcoColor
-  {
-    color: #149ddd;
+
+// TYPEWRITER EFFECT 
+
+.typewriter {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .05em solid rgb(56, 72, 94); /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  width: 80%;
+  animation: 
+    typing 6s steps(40, end) infinite,
+    blink-caret 1s step-end infinite;
+
+}
+
+.typewriterPhone {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .05em solid rgb(56, 72, 94); /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  width:85%;
+  animation: 
+    typing 6s steps(40, end) infinite,
+    blink-caret 1s step-end infinite;
+
+}
+
+
+/* The typing effect */
+@keyframes typing {
+  0% {
+    width: 0%
   }
-
-
-  // FADE IN ANIMATIONS
-  
-  .fadeInCall {
-    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-       -moz-animation: fadein 2s; /* Firefox < 16 */
-        -ms-animation: fadein 2s; /* Internet Explorer */
-         -o-animation: fadein 2s; /* Opera < 12.1 */
-            animation: fadein 2s;
+  30% {
+    width: 90%
   }
+  100% {
+    width: 40%
 
-  .fadeOutCall {
-    -webkit-animation: fadeOut 1s forwards; /* Safari, Chrome and Opera > 12.1 */
-       -moz-animation: fadeOut 1s forwards; /* Firefox < 16 */
-        -ms-animation: fadeOut 1s forwards; /* Internet Explorer */
-         -o-animation: fadeOut 1s forwards; /* Opera < 12.1 */
-            animation: fadeOut 1s forwards;
   }
+}
 
-  @keyframes fadein {
-    from { opacity: 0; }
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: rgb(56, 72, 94); }
+}
+
+
+// FOR PUTTING TEXT OVER IMAGE
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text-decoration-underline
+{
+  text-decoration-color:  #149ddd !important;
+}
+
+
+// TIMELINES
+
+.timeline {
+  border-left: 1px solid #3f0d0c;
+  position: relative;
+  list-style: none;
+}
+
+.timeline .timeline-item {
+  position: relative;
+}
+
+.timeline .timeline-item-end {
+  position: relative;
+}
+
+.timeline .timeline-item:after {
+  position: absolute;
+  display: block;
+  top: 0;
+}
+
+.timeline .timeline-item-end:after {
+  position: absolute;
+  display: block;
+  top: -500;
+}
+
+.timeline .timeline-item:after {
+  background-color: #3f0d0c;
+  left: -38px;
+  border-radius: 50%;
+  height: 11px;
+  width: 11px;
+  content: "";
+}
+
+.timeline .timeline-item-end:after {
+  background-color: #3f0d0c;
+  left: -38px;
+  border-radius: 50%;
+  height: 11px;
+  width: 11px;
+  content: "";
+}
+
+// TIMELINE FOR PHONES 
+
+.timelinePhone
+{
+  border-left: 1px solid #3f0d0c;
+  position: relative;
+  list-style: none;
+}
+
+.timelinePhone .timeline-item {
+  position: relative;
+}
+
+.timelinePhone .timeline-item-end {
+  position: relative;
+}
+
+.timelinePhone .timeline-item:after {
+  position: absolute;
+  display: block;
+  top: 0;
+}
+
+.sectionPhone
+{
+  margin-left: 0%;
+  width: 85%;
+  margin-top: 35%;
+}
+
+.timelinePhone .timeline-item-end:after {
+  position: absolute;
+  display: block;
+  top: -500;
+}
+
+.timelinePhone .timeline-item:after {
+  background-color: #3f0d0c;
+  left: -38px;
+  border-radius: 50%;
+  height: 11px;
+  width: 11px;
+  content: "";
+}
+
+.timelinePhone .timeline-item-end:after {
+  background-color: #3f0d0c;
+  left: -38px;
+  border-radius: 50%;
+  height: 11px;
+  width: 11px;
+  content: "";
+}
+
+// END OF TIMELINE FOR PHONES 
+
+
+.timelineDivide
+{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 0px;
+  align-items:flex-start;
+}
+
+.TimelineDividePhone
+{
+  display: grid;
+  grid-template-rows: 10% 10%;
+  grid-row-gap: 30%;
+  align-items:flex-start;
+  margin-left: -3.8%;
+}
+
+.TimelineDividePhone div h3
+{
+  margin-left: -5%;
+}
+
+.educationDividePhone ul
+{
+  margin-left: -5%;
+  margin-top: -1%;
+}
+
+.educationDividePhone ul li h5
+{
+  width: 50%;
+}
+
+
+
+
+.formalEducation
+{
+  display: inline-flex;
+  flex-direction: row;
+  margin-right: auto;
+}
+
+.formalEducation .timeline
+{
+  margin-top: 20%;
+  margin-left: -100%;
+}
+
+
+.formalEducation2
+{
+  display: inline-flex;
+  flex-direction: column;
+  margin-top: 10.2%;
+}
+
+.IcoColor
+{
+  color: #149ddd;
+}
+
+
+// FADE IN ANIMATIONS
+
+.fadeInCall {
+  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+      -moz-animation: fadein 2s; /* Firefox < 16 */
+      -ms-animation: fadein 2s; /* Internet Explorer */
+        -o-animation: fadein 2s; /* Opera < 12.1 */
+          animation: fadein 2s;
+}
+
+.fadeOutCall {
+  -webkit-animation: fadeOut 1s forwards; /* Safari, Chrome and Opera > 12.1 */
+      -moz-animation: fadeOut 1s forwards; /* Firefox < 16 */
+      -ms-animation: fadeOut 1s forwards; /* Internet Explorer */
+        -o-animation: fadeOut 1s forwards; /* Opera < 12.1 */
+          animation: fadeOut 1s forwards;
+}
+
+@keyframes fadein {
+  from { opacity: 0.2; }
+  to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0.2; }
     to   { opacity: 1; }
-  }
+}
 
-  /* Firefox < 16 */
-  @-moz-keyframes fadein {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-  }
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0.2; }
+    to   { opacity: 1; }
+}
 
-  /* Safari, Chrome and Opera > 12.1 */
-  @-webkit-keyframes fadein {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-  }
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0.2; }
+    to   { opacity: 1; }
+}
 
-  /* Internet Explorer */
-  @-ms-keyframes fadein {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-  }
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0.2; }
+    to   { opacity: 1; }
+}
 
-  /* Opera < 12.1 */
-  @-o-keyframes fadein {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-  }
+// NOW FADE OUT DECLARED 
 
-  // NOW FADE OUT DECLARED 
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0.2; }
+}
 
-  @keyframes fadeOut {
+/* Firefox < 16 */
+@-moz-keyframes fadeOut {
     from { opacity: 1; }
-    to   { opacity: 0; }
-  }
+    to   { opacity: 0.2; }
+}
 
-  /* Firefox < 16 */
-  @-moz-keyframes fadeOut {
-      from { opacity: 1; }
-      to   { opacity: 0; }
-  }
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadeOut {
+    from { opacity: 1; }
+    to   { opacity: 0.2; }
+}
 
-  /* Safari, Chrome and Opera > 12.1 */
-  @-webkit-keyframes fadeOut {
-      from { opacity: 1; }
-      to   { opacity: 0; }
-  }
+/* Internet Explorer */
+@-ms-keyframes fadeOut {
+    from { opacity: 1; }
+    to   { opacity: 0.2; }
+}
 
-  /* Internet Explorer */
-  @-ms-keyframes fadeOut {
-      from { opacity: 1; }
-      to   { opacity: 0; }
-  }
-
-  /* Opera < 12.1 */
-  @-o-keyframes fadeOut {
-      from { opacity: 1; }
-      to   { opacity: 0; }
-  }
+/* Opera < 12.1 */
+@-o-keyframes fadeOut {
+    from { opacity: 1; }
+    to   { opacity: 0.2; }
+}
 
 
-  .cursorPointer
-  {
-    cursor: pointer;
-  }
+.cursorPointer
+{
+  cursor: pointer;
+}
 
-  // FORCE DELETE TEXT DECORATION 
-  a{
-    text-decoration: none;
-  }
+// FORCE DELETE TEXT DECORATION 
+a{
+  text-decoration: none;
+}
 
 
-  .text-elegant
-  {
-    color: #d9b061;
-  }
+.text-elegant
+{
+  color: #d9b061;
+}
 
-  .text-blue-elegant
-  {
-    color: rgb(56, 72, 94);
-  }
+.text-blue-elegant
+{
+  color: rgb(56, 72, 94);
+}
 
 .loadingScreen
 {
-    padding-bottom: 50%;
-    margin-left: 45%;
-    margin-top: 20%;
-    font-size: large;
-    font-family: 'Open Sans', sans-serif;
-    position: fixed;
+  padding-bottom: 50%;
+  margin-left: 45%;
+  margin-top: 20%;
+  font-size: large;
+  font-family: 'Open Sans', sans-serif;
+  position: fixed;
 }
 
 .mrl-5
 {
-  margin-left: -2%;
+margin-left: -2%;
+}
+
+// ANIMATION FOR THE IMAGES
+
+.imageAnimation5050 {
+-webkit-animation: animateIMG 1s infinite linear; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: animateIMG 1s infinite linear; /* Firefox < 16 */
+    -ms-animation: animateIMG 1s infinite linear; /* Internet Explorer */
+      -o-animation: animateIMG 1s infinite linear; /* Opera < 12.1 */
+        animation: animateIMG 1s infinite linear;
+}
+
+@keyframes animateIMG {
+0%
+{ 
+  transform:scale(1.1); 
+  outline: none;
+  border-color: #dadada;
+  box-shadow: 0 0 10px #dadada;
+}
+50%
+{ 
+  transform:scale(1);
+}
+100%
+{
+  transform:scale(1.1); outline: none;
+  border-color: #dadada;
+  box-shadow: 0 0 10px #dadada;
+}
+}
+
+/* Firefox < 16 */
+@-moz-keyframes animateIMG {
+from { transform:scale(0.1); }
+to   { transform:scale(0.3);  }
+}
+
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes animateIMG {
+from { transform:scale(0.1); }
+to   { transform:scale(0.3);  }
+}
+
+
+/* Internet Explorer */
+@-ms-keyframes animateIMG {
+from { transform:scale(0.1); }
+to   { transform:scale(0.3);  }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes animateIMG {
+from { transform:scale(0.1); }
+to   { transform:scale(0.3);  }
+}
+
+.hrforPC
+{
+margin-top: 10%; width: 110%; margin-left: -10%;
+}
+
+.hrforPhone
+{
+margin-top: 30%;
+width: 100%;
+}
+
+.resumePhone
+{
+margin-left: 8%;
+}
+
+
+.resumePhone .introduction
+{
+margin-left: -4%;
+}
+
+.navbarPhone
+{
+width: 90%;
+}
+
+.phoneBody
+{
+max-width: 100%;
+overflow-x: hidden;
 }
