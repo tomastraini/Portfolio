@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-  env = "dev";
-  // env = "prod";
-  apiurl = "/api/";
+  // env = "dev";
+  env = "prod";
+
+
+  apiurl = this.env == "dev" ?
+  "/api/" :
+  'https://portfolio-back-dx94.onrender.com';
 
   ngOnInit(): void {
     this.changeIcon();
