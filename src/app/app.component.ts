@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
 
   apiurl = this.env == "dev" ?
   "/api/" :
-  'https://portfolio-back-dx94.onrender.com';
+  'https://portfolio-back-dx94.onrender.com/api/';
 
   ngOnInit(): void {
     this.changeIcon();
