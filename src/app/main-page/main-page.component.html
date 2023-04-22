@@ -472,6 +472,30 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
       </div>
     </div>  
   </div>
+
+  <hr class="{{isPhone === true ? 'hrforPhone' : 'hrforPC' }}">
+
+  <div style="padding-top: 2%;" class="{{ fadeInResume }}" id="comments"
+  [ngStyle]="{'margin-left':isPhone === true ? '5%' : '0%'}">
+    <h1 style="color: rgb(56, 72, 94); font-weight:bold;">Comments</h1>
+    <p class="text-dark">
+      Do you have any comments for me?
+    </p>
+    <div class="container">
+      <form action="">
+        <div class="input-group mb-5">
+          <textarea class="form-control" placeholder="What are your thoughts?"
+          id="commentText" name="commentText" rows="3" [(ngModel)]="commentText">
+        </textarea>
+          <button class="btn btn-danger pl-5"  type="button" (click)="sendComment()">
+            Send
+          </button>
+        </div>
+
+      </form>
+
+    </div>  
+  </div>
 </div>
 
 </div>

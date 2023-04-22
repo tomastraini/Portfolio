@@ -9,6 +9,7 @@ export class AppComponent implements OnInit {
 
   env = "dev";
   // env = "prod";
+  apiurl = "/api/";
 
   ngOnInit(): void {
     this.changeIcon();

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, HostBinding, HostListener } from '@angular/core';
 import { AppComponent } from '../app.component';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-main-page',
@@ -7,7 +8,9 @@ import { AppComponent } from '../app.component';
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit {
-  constructor(public appcomp: AppComponent) { }
+  constructor(private http: HttpClient, public appcomp: AppComponent) { }
+
+  commentText: any;
 
   HomeTextColor = "text-white";
   AboutTextColor = "text-white";
@@ -66,6 +69,13 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit(): void
   {
+    const route = this.appcomp.apiurl;
+
+    this.http.get<any[]>(route + 'Comments').subscribe(res =>{
+      console.log(res);
+      
+    });
+
     this.handleAnimation();
     var ua = navigator.userAgent;
     var screenheight = window.screen.availHeight
@@ -87,6 +97,8 @@ export class MainPageComponent implements OnInit {
       this.isPhone = false;
     }
     
+
+
   }
 
   loadImgs()
@@ -208,4 +220,9 @@ export class MainPageComponent implements OnInit {
   
   isOdd(num: number) { return num % 2;}
 
+  sendComment()
+  {
+    console.log(this.commentText);
+    
+  }
 }
