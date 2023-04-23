@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.changeIcon();
 
-    this.http.get<any[]>(this.apiurl + 'wakeUpCall').subscribe(res =>{
+    this.http.get<any>(this.apiurl + 'wakeUpCall').subscribe(res =>{
     });
 
   }
