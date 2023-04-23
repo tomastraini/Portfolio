@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  constructor(private http: HttpClient) { }
 
   // env = "dev";
-  env = "prod";
+  env = "dev";
 
 
   apiurl = this.env == "dev" ?
@@ -17,6 +19,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.changeIcon();
+
+    this.http.get<any[]>(this.apiurl + 'wakeUpCall').subscribe(res =>{
+    });
+
   }
   title = 'Portfolio';
 

@@ -10,7 +10,9 @@ import { HttpClient } from '@angular/common/http';
 export class MainPageComponent implements OnInit {
   constructor(private http: HttpClient, public appcomp: AppComponent) { }
 
-  commentText: any;
+  commentText = "";
+  sendingComment = false;
+  route = this.appcomp.apiurl;
 
   HomeTextColor = "text-white";
   AboutTextColor = "text-white";
@@ -69,13 +71,6 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit(): void
   {
-    const route = this.appcomp.apiurl;
-
-    this.http.get<any[]>(route + 'Comments').subscribe(res =>{
-      console.log(res);
-      
-    });
-
     this.handleAnimation();
     var ua = navigator.userAgent;
     var screenheight = window.screen.availHeight
@@ -222,7 +217,25 @@ export class MainPageComponent implements OnInit {
 
   sendComment()
   {
-    console.log(this.commentText);
-    
+    if(this.commentText == "" || this.commentText == undefined || this.commentText == null)
+    {
+      return;
+    }
+    this.sendingComment = true;
+
+    this.http.post(this.route + 'Comments', 
+    {
+      "comment": this.commentText
+    }, {
+      observe: 'response',
+    }).subscribe(res =>{
+      this.sendingComment = false;
+      this.commentText = ''
+      if(res.status === 200)
+      {
+        console.log(res);
+      }
+    });
+
   }
 }

@@ -483,13 +483,28 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
     </p>
     <div class="container">
       <form action="">
+        <!-- Loading spinner -->
+        <div class="row" *ngIf="sendingComment">
+          <div class="col-md-1">
+            <p class="text-dark">
+              Loading...
+            </p>
+          </div>
+          <div class="col-md-1 movespinner">
+            <div class="spinner-border text-danger" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
+
+      <!-- COMMENT INPUT -->   
         <div class="input-group mb-5">
           <textarea class="form-control" placeholder="What are your thoughts?"
           id="commentText" name="commentText" rows="3" [(ngModel)]="commentText">
-        </textarea>
+          </textarea>
           <button class="btn btn-danger pl-5"  type="button" (click)="sendComment()">
             Send
-          </button>
+          </button> 
         </div>
 
       </form>
