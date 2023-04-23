@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   // env = "dev";
-  env = "dev";
+  env = "prod";
 
 
   apiurl = this.env == "dev" ?
