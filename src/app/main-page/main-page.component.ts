@@ -55,6 +55,7 @@ export class MainPageComponent implements OnInit {
   imggenexus  = "https://www.genexus.com/media/images/genexusbyglobant_large.svg?timestamp=20220921163437"
   imgtrinity  = "https://www.trinitycollege.com/images/trinity_college_london_logo.png"
   imgefset  = "https://www.efset.org/cert/6ea6771479ceeade5f025fb16ff71264.svg"
+  imgudemy  = "https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
   imgPoD  = "https://policyondemand.pwc.com/Assets/images/PoD-logo-001.jpg"
 
   PDFLink  = this.environment == "dev" ? 

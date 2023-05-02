@@ -1,9 +1,9 @@
 <!-- LOADING IMAGES -->
 <div  [hidden]="!imagesLoaded" class="loadingScreen">
-    <div class="spinner-border text-primary" role="status" >
+    <div class="spinner-border text-primary mr-5 loadingSpinner" role="status" >
       <span class="visually-hidden">Loading...</span>
     </div>
-    <p class="elegant-text-paragraphs mrl-5">Loading.{{ countImagesPoints }}</p>
+    <p class="elegant-text-paragraphs">Loading.{{ countImagesPoints }}</p>
 </div>
 
 <!-- ON IMAGES LOADED -->
@@ -87,7 +87,7 @@ class="{{ isPhone === true ? 'phoneBody' : '' }}">
     style="border-radius: 50%; border: 5px solid #8d6f57;"
     [hidden]="imagesLoaded" (load)="loadImgs()">
 
-    <a style="font-weight: 500; margin-left: -20%;" >
+    <a style="font-weight: 500; margin-left: -20%;" class="elegant-text-headers">
       Tomás Traini
       <br>
       Portfolio
@@ -384,6 +384,19 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
           Courses and certifications
         </h3>
         <ul class="timeline elegant-text-paragraphs">
+
+          <li class="timeline-item mb-5">
+            <h5 class="fw-bold" >NestJS Course</h5>
+            <p class="fw-bold cursorPointer elegant-text-headers "
+            (click)="GoTo('https://www.udemy.com/certificate/UC-baf418ca-24b3-4299-ae3f-6aba8f8c07f2/')">
+                <img src="{{ imgudemy }}" height="50" width="50" 
+              class="cursorPointer border rounded border-secondary imageAnimation5050 elegant-img-filling"
+              (load)="loadImgs()">
+                Udemy
+            </p>
+            
+            <p class="elegant-text-paragraphs-darker mb-2 fw-bold">15th april 2023 - 27th april 2023</p>
+          </li>
 
           <li class="timeline-item mb-5">
             <h5 class="fw-bold" >C2 English certification (79/100)</h5>

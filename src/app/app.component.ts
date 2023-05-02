@@ -9,8 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
-  // env = "dev";
-  env = "prod";
+  env = "dev";
+  // env = "prod";
 
 
   apiurl = this.env == "dev" ?
