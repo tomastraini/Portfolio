@@ -3,7 +3,7 @@
     <div class="spinner-border text-primary" role="status" >
       <span class="visually-hidden">Loading...</span>
     </div>
-    <p class="text-dark mrl-5">Loading.{{ countImagesPoints }}</p>
+    <p class="elegant-text-paragraphs mrl-5">Loading.{{ countImagesPoints }}</p>
 </div>
 
 <!-- ON IMAGES LOADED -->
@@ -23,7 +23,7 @@ class="{{ isPhone === true ? 'phoneBody' : '' }}">
         <img
         src="{{ imgsrc2 }}"
         alt="Loading..." height="100" width="100"
-        style="border-radius: 50%; border: 5px solid #8d6f57"
+        style="border-radius: 50%; border: 5px solid #FFA07A"
         [hidden]="imagesLoaded" (load)="loadImgs()">
   
         <a style="font-weight: 500;"
@@ -79,7 +79,7 @@ class="{{ isPhone === true ? 'phoneBody' : '' }}">
 <!-- NAVBAR FOR PHONES -->
 
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbarPhone"
-*ngIf="isPhone" style="background-color: #3f0d0c;">
+*ngIf="isPhone" style="background-color: #1a1a1a;">
   <div class="container-fluid">
     <img
     src="{{ imgsrc2 }}"
@@ -152,14 +152,15 @@ class="{{ isPhone === true ? 'phoneBody' : '' }}">
 
 <div style="padding-top: 2%; "
 class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
-  <hr>
+  <hr class="elegant-text-headers">
 
 <div id="AboutMe" class="{{ fadeInAbout }}">
-  <h1 style="color: rgb(56, 72, 94); font-weight:bold;" [ngStyle]="{'margin-left':isPhone === true ? '1%' : '0%'}">
+  <h1 style="font-weight:bold;" [ngStyle]="{'margin-left':isPhone === true ? '1%' : '0%'}"
+  class="elegant-text-headers">
     ABOUT ME
   </h1>
 
-  <p [ngStyle]="{'margin-left':isPhone === true ? '1%' : '0%'}">
+  <p [ngStyle]="{'margin-left':isPhone === true ? '1%' : '0%'}" class="elegant-text-paragraphs">
     I am currently a Ssr. Fullstack developer working at PwC.
     <br>
     In the last 2 years i've been working in a set of projects which have given me a good and trustworthy
@@ -178,17 +179,17 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
         </div>
 
         <div class="col-xl-6 col-lg-6 col-md-6"
-        style="border:1px solid #ddd; background-color: #d8d0c5; width: 49%;"
+        style="border:1px solid #ddd; background-color:  #333333; width: 49%;"
         [ngStyle]="{
           'width':isPhone === true ? '95%' : '49%',
           'margin-left':isPhone === true ? '2.5%' : '0%'
         }">
           <h2
-          style="color: rgb(56, 72, 94); font-weight:bold;"
-          class="{{ isPhone ? 'typewriterPhone' : 'typewriter' }}">
+          style="font-weight:bold;"
+          class="{{ isPhone ? 'typewriterPhone' : 'typewriter' }}, elegant-text-headers">
             Fullstack developer
           </h2>
-          <p>
+          <p class="elegant-text-paragraphs">
             I will be leaving all of my basic information below:
             <br>
             <br><i class="fa fa-chevron-right"></i> <b>Degree</b>:
@@ -199,10 +200,10 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
             <br><i class="fa fa-chevron-right"></i> <b>Country</b>: Argentina
             
           </p>
-          <h2 style="color: rgb(56, 72, 94); font-weight:bold;" >
+          <h2 style="font-weight:bold;" class="elegant-text-headers" class="elegant-text-paragraphs">
             Technologies
           </h2>
-          <p>
+          <p class="elegant-text-paragraphs">
             <br><i class="fa fa-chevron-right"></i> <b>Back-end</b>: <br>
             <b>C# .Net (3.1+)</b> I have been through some of the most important architectures such as
             DDD (Domain driven design), MVC, SOA (Service Oriented Architecture) and worked in multiple
@@ -230,18 +231,18 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
 
   </div>
 </div>
-<hr>
+<hr class="elegant-text-headers">
 
 <!-- RESUME -->
 <div style="padding-top: 2%;" class="{{ fadeInResume }} {{ isPhone === true ? 'resumePhone' : 'resumePC' }}" id="resume">
   <div class="introduction">
-    <h1 style="font-weight:bold;" class="text-blue-elegant">RESUME</h1>
+    <h1 style="font-weight:bold;" class="elegant-text-headers">RESUME</h1>
 
     <div>
-      <h4 class="text-blue-elegant">
+      <h4 class="elegant-text-headers">
         Look CV
       </h4>
-      <button class="btn btn-danger" (click)="GoTo(PDFLink)">
+      <button class="btn vibrantOrange-btn" (click)="GoTo(PDFLink)">
         <i class="fa fa-eye"></i>
       </button>
     </div>
@@ -251,24 +252,23 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
   <section class="py-5">
     <!-- DIV FOR PROFFESSIONAL EXPERIENCE  -->
     <div class="{{isPhone === true ? 'TimelineDividePhone' : 'timelineDivide' }}">
-      <div>
-        <h3 style="color: rgb(14, 16, 19); font-weight:bold;">
+      <div class="elegant-text-paragraphs">
+        <h3 style="font-weight:bold;">
           Professional experience
         </h3>
         <ul class="{{isPhone === true ? 'timelinePhone' : 'timeline' }}">
           <li class="timeline-item mb-5">
             <h5 class="fw-bold">
-              
               Ssr. Software developer 
             </h5>
             <h5 class="fw-bold cursorPointer" (click)="GoTo('https://www.pwc.com/gx/en')">
               <img src="{{ imgpwc }}" height="50" width="50" 
-              class="border rounded border-secondary imageAnimation5050"
+              class="border rounded border-secondary imageAnimation5050 elegant-img-filling"
                 (load)="loadImgs()">
               PwC
             </h5>
-            <p class="text-muted mb-2 fw-bold">1th January 2023 - *</p>
-            <p class="text-muted">
+            <p class="elegant-text-paragraphs-darker mb-2 fw-bold">1st January 2023 - *</p>
+            <p class="elegant-text-paragraphs-darker">
               The main tasks i perform as a software developer are the development, testing and <br> 
               improvement of the features within the application (That includes the C# side and <br>
               also the Angular). I am also part of a team that specializes on the correction of <br>
@@ -284,12 +284,12 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
             </h5>
             <h5 class="fw-bold cursorPointer" (click)="GoTo('https://www.pwc.com/gx/en')">
               <img src="{{ imgpwc }}" height="50" width="50"
-              class="border rounded border-secondary imageAnimation5050"
+              class="border rounded border-secondary imageAnimation5050 elegant-img-filling"
                 (load)="loadImgs()">
               PwC
             </h5>
-            <p class="text-muted mb-2 fw-bold">8th August 2022 - 31st December 2022</p>
-            <p class="text-muted">
+            <p class="elegant-text-paragraphs-darker mb-2 fw-bold">8th August 2022 - 31st December 2022</p>
+            <p class="elegant-text-paragraphs-darker">
               Work at and co-lead at a team specialized at fixing web applications
               security issues, using for this purpose specialized tools and researching 
               the found issues on my own. I also develop new application features and implement 
@@ -305,11 +305,11 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
             </h5>
             <h5 class="fw-bold cursorPointer" (click)="GoTo('https://www.ingenea.com.ar/')">
               <img src="{{ imgingenea }}" height="50" width="125"
-              class="border rounded border-secondary imageAnimation5050" (load)="loadImgs()">
+              class="border rounded border-secondary imageAnimation5050 elegant-img-filling" (load)="loadImgs()">
               Ingenea
             </h5>
-            <p class="text-muted mb-2 fw-bold">1st January 2022 - 7th August 2022</p>
-            <p class="text-muted">
+            <p class="elegant-text-paragraphs-darker mb-2 fw-bold">1st January 2022 - 7th August 2022</p>
+            <p class="elegant-text-paragraphs-darker">
               Development of new features to clients residing at Argentina, Mexico and Brazil,
               and some of my responsabilities were the development, engineering and maintenance of
               new endpoints, services, repositories and connecting them to the database, while also
@@ -320,8 +320,8 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
           <li class="timeline-item mb-5">
             <h5 class="fw-bold">Software developer</h5>
             <h5 class="fw-bold">Freelance</h5>
-            <p class="text-muted mb-2 fw-bold">14th June 2021 - 31st December 2021</p>
-            <p class="text-muted">
+            <p class="elegant-text-paragraphs-darker mb-2 fw-bold">14th June 2021 - 31st December 2021</p>
+            <p class="elegant-text-paragraphs-darker">
               I have worked developing applications for small companies looking for a software
               dedicated towards the administration of their havings.
             </p>
@@ -334,40 +334,41 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
       </div>
     </div>
     
-    <hr class="{{isPhone === true ? 'hrforPhone' : 'hrforPC' }}">
+    <hr class="{{isPhone === true ? 'hrforPhone' : 'hrforPC' }} elegant-text-headers">
 
     <!-- DIVIDE THE EDUCATION  -->
     <div class="{{isPhone === true ? 'TimelineDividePhone' : 'timelineDivide' }}">
       <div>
-        <h3 style="color: rgb(14, 16, 19); font-weight:bold;">
+        <h3 style="font-weight:bold;" class="elegant-text-headers">
           Education
         </h3>
-        <ul class="{{isPhone === true ? 'timelinePhone' : 'timeline' }}">
+        <ul class="{{isPhone === true ? 'timelinePhone' : 'timeline' }} elegant-text-paragraphs">
     
           <li class="timeline-item mb-5">
             <h5 class="fw-bold" >Software developer degree</h5>
-            <p class="fw-bold cursorPointer text-blue-elegant "
+            <p class="fw-bold cursorPointer elegant-text-headers "
             (click)="GoTo('https://institutozonaoeste.edu.ar/')">
                 <img src="{{ imgizo }}" height="50" width="50" 
-              class="cursorPointer border rounded border-secondary imageAnimation5050" (load)="loadImgs()">
+              class="cursorPointer border rounded border-secondary imageAnimation5050 elegant-img-filling" (load)="loadImgs()">
                 Instituto zona oeste
             </p>
             
-            <p class="text-muted mb-2 fw-bold">6th march 2019 - 10th december 2023</p>
+            <p class="elegant-text-paragraphs-darker mb-2 fw-bold">6th march 2019 - 10th december 2023</p>
           </li>
     
 
     
           <li class="timeline-item mb-5">
             <h5 class="fw-bold" >Bachelor's in economics and finance</h5>
-            <p class="fw-bold cursorPointer text-blue-elegant "
+            <p class="fw-bold cursorPointer elegant-text-headers "
             (click)="GoTo('https://institutozonaoeste.edu.ar/')">
                 <img src="{{ imgizo }}" height="50" width="50" 
-              class="cursorPointer border rounded border-secondary imageAnimation5050" (load)="loadImgs()">
+              class="cursorPointer border rounded border-secondary imageAnimation5050 elegant-img-filling"
+              (load)="loadImgs()">
                 Instituto zona oeste
             </p>
             
-            <p class="text-muted mb-2 fw-bold">14th march 2014 - 28th november 2018</p>
+            <p class="elegant-text-paragraphs-darker mb-2 fw-bold">14th march 2014 - 28th november 2018</p>
           </li>
     
           
@@ -378,57 +379,61 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
       </div>
 
       <div>
-        <h3 style="color: rgb(14, 16, 19); font-weight:bold; "
-        class="{{isPhone === true ? 'formal2Phonetitle' : '' }}" >
+        <h3 style="font-weight:bold;"
+        class="{{isPhone === true ? 'formal2Phonetitle' : '' }} elegant-text-headers">
           Courses and certifications
         </h3>
-        <ul class="timeline">
+        <ul class="timeline elegant-text-paragraphs">
 
           <li class="timeline-item mb-5">
             <h5 class="fw-bold" >C2 English certification (79/100)</h5>
-            <p class="fw-bold cursorPointer text-blue-elegant "
+            <p class="fw-bold cursorPointer elegant-text-headers "
             (click)="GoTo('https://www.efset.org/cert/rEXkD8')">
                 <img src="{{ imgefset }}" height="50" width="50" 
-              class="cursorPointer border rounded border-secondary imageAnimation5050" (load)="loadImgs()">
+              class="cursorPointer border rounded border-secondary imageAnimation5050 elegant-img-filling"
+              (load)="loadImgs()">
                 EF SET 50
             </p>
             
-            <p class="text-muted mb-2 fw-bold">6th march 2019 - 10th december 2023</p>
+            <p class="elegant-text-paragraphs-darker mb-2 fw-bold">6th march 2019 - 10th december 2023</p>
           </li>
 
           <li class="timeline-item mb-5">
             <h5 class="fw-bold" >Deutsch Sprache A2</h5>
-            <p class="fw-bold cursorPointer text-blue-elegant "
+            <p class="fw-bold cursorPointer elegant-text-headers "
             (click)="GoTo('https://goetherosario.org/')">
                 <img src="{{ imggoethe }}" height="50" width="120" 
-              class="cursorPointer border rounded border-secondary imageAnimation5050" (load)="loadImgs()">
+              class="cursorPointer border rounded border-secondary imageAnimation5050 elegant-img-filling"
+              (load)="loadImgs()">
                 Goethe Institut Rosario
             </p>
-            <p class="text-muted mb-2 fw-bold">14th march 2022 - *</p>
+            <p class="elegant-text-paragraphs-darker mb-2 fw-bold">14th march 2022 - *</p>
           </li>
     
           <li class="timeline-item mb-5">
             <h5 class="fw-bold" >GeneXus 17 Junior Analyst</h5>
-            <p class="fw-bold cursorPointer text-blue-elegant "
+            <p class="fw-bold cursorPointer elegant-text-headers "
             (click)="GoTo('https://training.genexus.com/en/learning/certifications/certified-technicians?data=traini')">
                 <img src="{{ imggenexus }}" height="50" width="50" 
-              class="cursorPointer border rounded border-secondary imageAnimation5050" (load)="loadImgs()">
+              class="cursorPointer border rounded border-secondary imageAnimation5050 elegant-img-filling"
+              (load)="loadImgs()">
                 Genexus Training
             </p>
             
-            <p class="text-muted mb-2 fw-bold">6th march 2019 - 10th december 2023</p>
+            <p class="elegant-text-paragraphs-darker mb-2 fw-bold">6th march 2019 - 10th december 2023</p>
           </li>
 
           <li class="timeline-item mb-5">
             <h5 class="fw-bold" >English B2.2 Test</h5>
-            <p class="fw-bold cursorPointer text-blue-elegant "
+            <p class="fw-bold cursorPointer elegant-text-headers "
             (click)="GoTo('https://www.trinitycollege.com/')">
                 <img src="{{ imgtrinity }}" height="50" width="100" 
-              class="cursorPointer border rounded border-secondary imageAnimation5050" (load)="loadImgs()">
+              class="cursorPointer border rounded border-secondary imageAnimation5050 elegant-img-filling"
+              (load)="loadImgs()">
                 Trinity College of London
             </p>
             
-            <p class="text-muted mb-2 fw-bold">28th november 2018</p>
+            <p class="elegant-text-paragraphs-darker mb-2 fw-bold">28th november 2018</p>
           </li>
     
           
@@ -443,17 +448,17 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
   </section>
 
 </div>
-  <hr class="{{isPhone === true ? 'hrforPhone' : 'hrforPC' }}">
+  <hr class="{{isPhone === true ? 'hrforPhone' : 'hrforPC' }} elegant-text-headers">
 
   <div style="padding-top: 2%;" class="{{ fadeInResume }}" id="portfolio"
   [ngStyle]="{'margin-left':isPhone === true ? '5%' : '0%'}">
-    <h1 style="color: rgb(56, 72, 94); font-weight:bold;">PORTFOLIO</h1>
-    <p class="text-dark">
+    <h1 style="font-weight:bold;" class="elegant-text-headers">PORTFOLIO</h1>
+    <p class="elegant-text-paragraphs elegant-text-paragraphs">
       I'll be listing below some of the projects in which i have worked on and can be seen and used;
     </p>
     <div class="container">
       <div class="row mb-5">
-        <div class="col text-dark border border-dark rounded cursorPointer imageAnimation5050"
+        <div class="col elegant-text-paragraphs border border-dark rounded cursorPointer imageAnimation5050"
         (click)="GoTo('https://policyondemand.pwc.com/')">
           Policy on demand
           <img src="{{ imgPoD }}" height="50" width="100" 
@@ -473,12 +478,12 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
     </div>  
   </div>
 
-  <hr class="{{isPhone === true ? 'hrforPhone' : 'hrforPC' }}">
+  <hr class="{{isPhone === true ? 'hrforPhone' : 'hrforPC' }} elegant-text-headers">
 
   <div style="padding-top: 2%;" class="{{ fadeInResume }}" id="comments"
   [ngStyle]="{'margin-left':isPhone === true ? '5%' : '0%'}">
-    <h1 style="color: rgb(56, 72, 94); font-weight:bold;">Comments</h1>
-    <p class="text-dark">
+    <h1 style="font-weight:bold;" class="elegant-text-headers">Comments</h1>
+    <p class="elegant-text-paragraphs">
       Do you have any comments for me?
     </p>
     <div class="container">
