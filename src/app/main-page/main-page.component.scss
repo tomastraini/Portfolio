@@ -39,8 +39,8 @@
 }
 
 .sidebar-nav li a:hover {
-  color: #fff;
-  background: #F2F2F2;
+  color: #ffffff !important;
+  background: #222222 !important;
   text-decoration: none;
 }
 
@@ -86,8 +86,8 @@
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
-  color: #fff;
-  background: none;
+  color: #ffffff !important;
+  background: #1a1a1a !important;
 }
 
 .content-header {
@@ -156,7 +156,6 @@
   animation: 
     typing 6s steps(40, end) infinite,
     blink-caret 1s step-end infinite;
-
 }
 
 .typewriterPhone {
