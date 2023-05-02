@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostBinding, HostListener } from '@angular/core';
+import { Component, OnInit, Input, HostBinding, HostListener, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { AppComponent } from '../app.component';
 import { HttpClient } from '@angular/common/http';
 
@@ -7,8 +7,31 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss']
 })
-export class MainPageComponent implements OnInit {
-  constructor(private http: HttpClient, public appcomp: AppComponent) { }
+export class MainPageComponent implements OnInit, AfterViewInit {
+  constructor(private http: HttpClient, public appcomp: AppComponent) {
+  }
+  @ViewChild('aboutmeHeader', { static: false }) aboutMeHeader!: ElementRef;
+  @ViewChild('resumeHeader', { static: false }) resumeHeader!: ElementRef;
+  @ViewChild('portfolioHeader', { static: false }) portfolioHeader!: ElementRef;
+  @ViewChild('commentsHeader', { static: false }) commentsHeader!: ElementRef;
+  
+  ngAfterViewInit() {
+    setTimeout(() => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+          } else {
+            entry.target.classList.remove('animate');
+          }
+        });
+      });
+      observer.observe(this.aboutMeHeader.nativeElement);
+      observer.observe(this.resumeHeader.nativeElement);
+      observer.observe(this.portfolioHeader.nativeElement);
+      observer.observe(this.commentsHeader.nativeElement);
+    }, 0);
+  }
 
   commentText = "";
   sendingComment = false;
