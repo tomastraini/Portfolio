@@ -25,6 +25,11 @@ export class AppComponent implements OnInit {
     }).subscribe(res =>{
     });
 
+    this.http.post(this.apiurl + 'Visitors',{
+    }).subscribe(res =>{
+      
+    });
+
   }
   title = 'Portfolio';
 
