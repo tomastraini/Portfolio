@@ -61,7 +61,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   ResumeHomeHeight = 1960;
   PortfolioHeight = 1960;
 
-  imagesLoaded = true;
+  imagesLoaded = false;
 
   
   imagestoLoad = {
