@@ -127,11 +127,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   {
     this.countImagesPoints += "."; 
     this.countImages++;
-    
-    if(this.countImages === Object.keys(this.imagestoLoad).length)
-    {
-      this.imagesLoaded = false;
-    }
+
+    this.imagesLoaded = false;
   }
 
   handleAnimation()
