@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
 
     this.http.post(this.apiurl + 'Visitors',{
     }).subscribe(res =>{
-      
+
     });
 
   }

@@ -21,7 +21,7 @@ class="{{ isPhone === true ? 'phoneBody' : '' }}">
       <li class="sidebar-brand mb-5 mt-2">
 
         <img
-        src="{{ imgsrc2 }}"
+        src="{{ imagestoLoad.imgsrc2 }}"
         alt="Loading..." height="100" width="100"
         style="border-radius: 50%; border: 5px solid #FFA07A"
         [hidden]="imagesLoaded" (load)="loadImgs()">
@@ -82,7 +82,7 @@ class="{{ isPhone === true ? 'phoneBody' : '' }}">
 *ngIf="isPhone" style="background-color: #1a1a1a;">
   <div class="container-fluid">
     <img
-    src="{{ imgsrc2 }}"
+    src="{{ imagestoLoad.imgsrc2 }}"
     alt="Loading..." height="100" width="100"
     style="border-radius: 50%; border: 5px solid #8d6f57;"
     [hidden]="imagesLoaded" (load)="loadImgs()">
@@ -176,7 +176,7 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
           'margin-bottom':isPhone === true ? '2%' : '0%'
         }">
           <img [hidden]="imagesLoaded"
-          src="{{ imgsrc1 }}" alt="responsive webite" class="img-fluid
+          src="{{ imagestoLoad.imgsrc1 }}" alt="responsive webite" class="img-fluid
           {{ isPhone === true ? 'rounded' : '' }}"
           (load)="loadImgs()">      
         </div>
@@ -266,7 +266,7 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
               Ssr. Software developer 
             </h5>
             <h5 class="fw-bold cursorPointer" (click)="GoTo('https://www.pwc.com/gx/en')">
-              <img src="{{ imgpwc }}" height="50" width="50" 
+              <img src="{{ imagestoLoad.imgpwc }}" height="50" width="50" 
               class="border rounded border-secondary imageAnimation5050 elegant-img-filling"
                 (load)="loadImgs()">
               PwC
@@ -287,7 +287,7 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
               Associate Software developer
             </h5>
             <h5 class="fw-bold cursorPointer" (click)="GoTo('https://www.pwc.com/gx/en')">
-              <img src="{{ imgpwc }}" height="50" width="50"
+              <img src="{{ imagestoLoad.imgpwc }}" height="50" width="50"
               class="border rounded border-secondary imageAnimation5050 elegant-img-filling"
                 (load)="loadImgs()">
               PwC
@@ -308,7 +308,7 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
               Software developer
             </h5>
             <h5 class="fw-bold cursorPointer" (click)="GoTo('https://www.ingenea.com.ar/')">
-              <img src="{{ imgingenea }}" height="50" width="125"
+              <img src="{{ imagestoLoad.imgingenea }}" height="50" width="125"
               class="border rounded border-secondary imageAnimation5050 elegant-img-filling" (load)="loadImgs()">
               Ingenea
             </h5>
@@ -352,7 +352,7 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
             <h5 class="fw-bold" >Software developer degree</h5>
             <p class="fw-bold cursorPointer elegant-text-headers "
             (click)="GoTo('https://institutozonaoeste.edu.ar/')">
-                <img src="{{ imgizo }}" height="50" width="50" 
+                <img src="{{ imagestoLoad.imgizo }}" height="50" width="50" 
               class="cursorPointer border rounded border-secondary imageAnimation5050 elegant-img-filling" (load)="loadImgs()">
                 Instituto zona oeste
             </p>
@@ -366,7 +366,7 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
             <h5 class="fw-bold" >Bachelor's in economics and finance</h5>
             <p class="fw-bold cursorPointer elegant-text-headers "
             (click)="GoTo('https://institutozonaoeste.edu.ar/')">
-                <img src="{{ imgizo }}" height="50" width="50" 
+                <img src="{{ imagestoLoad.imgizo }}" height="50" width="50" 
               class="cursorPointer border rounded border-secondary imageAnimation5050 elegant-img-filling"
               (load)="loadImgs()">
                 Instituto zona oeste
@@ -393,7 +393,7 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
             <h5 class="fw-bold" >NestJS Course</h5>
             <p class="fw-bold cursorPointer elegant-text-headers "
             (click)="GoTo('https://www.udemy.com/certificate/UC-baf418ca-24b3-4299-ae3f-6aba8f8c07f2/')">
-                <img src="{{ imgudemy }}" height="50" width="50" 
+                <img src="{{ imagestoLoad.imgudemy }}" height="50" width="50" 
               class="cursorPointer border rounded border-secondary imageAnimation5050 elegant-img-filling"
               (load)="loadImgs()">
                 Udemy
@@ -406,7 +406,7 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
             <h5 class="fw-bold" >C2 English certification (79/100)</h5>
             <p class="fw-bold cursorPointer elegant-text-headers "
             (click)="GoTo('https://www.efset.org/cert/rEXkD8')">
-                <img src="{{ imgefset }}" height="50" width="50" 
+                <img src="{{ imagestoLoad.imgefset }}" height="50" width="50" 
               class="cursorPointer border rounded border-secondary imageAnimation5050 elegant-img-filling"
               (load)="loadImgs()">
                 EF SET 50
@@ -419,7 +419,7 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
             <h5 class="fw-bold" >Deutsch Sprache A2</h5>
             <p class="fw-bold cursorPointer elegant-text-headers "
             (click)="GoTo('https://goetherosario.org/')">
-                <img src="{{ imggoethe }}" height="50" width="120" 
+                <img src="{{ imagestoLoad.imggoethe }}" height="50" width="120" 
               class="cursorPointer border rounded border-secondary imageAnimation5050 elegant-img-filling"
               (load)="loadImgs()">
                 Goethe Institut Rosario
@@ -431,7 +431,7 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
             <h5 class="fw-bold" >GeneXus 17 Junior Analyst</h5>
             <p class="fw-bold cursorPointer elegant-text-headers "
             (click)="GoTo('https://training.genexus.com/en/learning/certifications/certified-technicians?data=traini')">
-                <img src="{{ imggenexus }}" height="50" width="50" 
+                <img src="{{ imagestoLoad.imggenexus }}" height="50" width="50" 
               class="cursorPointer border rounded border-secondary imageAnimation5050 elegant-img-filling"
               (load)="loadImgs()">
                 Genexus Training
@@ -444,7 +444,7 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
             <h5 class="fw-bold" >English B2.2 Test</h5>
             <p class="fw-bold cursorPointer elegant-text-headers "
             (click)="GoTo('https://www.trinitycollege.com/')">
-                <img src="{{ imgtrinity }}" height="50" width="100" 
+                <img src="{{ imagestoLoad.imgtrinity }}" height="50" width="100" 
               class="cursorPointer border rounded border-secondary imageAnimation5050 elegant-img-filling"
               (load)="loadImgs()">
                 Trinity College of London
@@ -478,7 +478,7 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
         <div class="col elegant-text-paragraphs border border-dark rounded cursorPointer imageAnimation5050"
         (click)="GoTo('https://policyondemand.pwc.com/')">
           Policy on demand
-          <img src="{{ imgPoD }}" height="50" width="100" 
+          <img src="{{ imagestoLoad.imgPoD }}" height="50" width="100" 
               class="cursorPointer border rounded border-secondary" (load)="loadImgs()">
               <br>
           <b>
