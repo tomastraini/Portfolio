@@ -15,12 +15,12 @@ class="{{ isPhone === true ? 'phoneBody' : '' }}">
         src="{{ imagestoLoad.imgsrc2 }}"
         alt="Loading..." height="100" width="100"
         style="border-radius: 50%; border: 5px solid #FFA07A"
-        [hidden]="imagesLoaded" (load)="loadImgs()">
+        (load)="loadImgs()">
   
         <a style="font-weight: 500;"
         class="text-white cursorPointer"
         
-        [ngStyle]="{'margin-top': !imagesLoaded ? '-5%' : '-15%' }">
+        [ngStyle]="{'margin-top':'-5%'}">
           Tomás Traini
         </a>
       </li>
@@ -76,7 +76,7 @@ class="{{ isPhone === true ? 'phoneBody' : '' }}">
     src="{{ imagestoLoad.imgsrc2 }}"
     alt="Loading..." height="100" width="100"
     style="border-radius: 50%; border: 5px solid #8d6f57;"
-    [hidden]="imagesLoaded" (load)="loadImgs()">
+    (load)="loadImgs()">
 
     <a style="font-weight: 500; margin-left: -20%;" class="elegant-text-headers">
       Tomás Traini
@@ -166,7 +166,7 @@ class="{{isPhone === true ? 'sectionPhone' : '' }}" (click)="collapseNavbar()">
         <div class="col-xl-6 col-lg-6 col-md-6" [ngStyle]="{
           'margin-bottom':isPhone === true ? '2%' : '0%'
         }">
-          <img [hidden]="imagesLoaded"
+          <img
           src="{{ imagestoLoad.imgsrc1 }}" alt="responsive webite" class="img-fluid
           {{ isPhone === true ? 'rounded' : '' }}"
           (load)="loadImgs()">      
