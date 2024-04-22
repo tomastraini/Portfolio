@@ -24,8 +24,8 @@ export class AppComponent implements OnInit {
   
       this.http.post(this.apiurl + 'Visitors',{
       }).subscribe();
-    } catch {
-
+    } catch (e) {
+      console.log(e)
     }
 
   }
