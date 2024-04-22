@@ -19,16 +19,16 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.changeIcon();
+    try {
+      this.http.get(this.apiurl + 'wakeUpCall',{
+        responseType: 'text'
+      }).subscribe();
+  
+      this.http.post(this.apiurl + 'Visitors',{
+      }).subscribe();
+    } catch {
 
-    this.http.get(this.apiurl + 'wakeUpCall',{
-      responseType: 'text'
-    }).subscribe(res =>{
-    });
-
-    this.http.post(this.apiurl + 'Visitors',{
-    }).subscribe(res =>{
-
-    });
+    }
 
   }
   title = 'Portfolio';
