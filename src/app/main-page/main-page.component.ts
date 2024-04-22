@@ -61,9 +61,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   ResumeHomeHeight = 1960;
   PortfolioHeight = 1960;
 
-  imagesLoaded = false;
-
-  
   imagestoLoad = {
     imgsrc1: this.environment == "dev" ?
       "https://drive.google.com/u/0/uc?id=1Z8E2HVm1qm7WCOm6EpO9gZIlR8Qq0fAi" :
@@ -127,8 +124,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   {
     this.countImagesPoints += "."; 
     this.countImages++;
-
-    this.imagesLoaded = false;
   }
 
   handleAnimation()

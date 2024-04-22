@@ -1,13 +1,4 @@
-<!-- LOADING IMAGES -->
-<div  [hidden]="!imagesLoaded" class="loadingScreen">
-    <div class="spinner-border text-primary mr-5 loadingSpinner" role="status" >
-      <span class="visually-hidden">Loading...</span>
-    </div>
-    <p class="elegant-text-paragraphs">Loading.{{ countImagesPoints }}</p>
-</div>
-
-<!-- ON IMAGES LOADED -->
-<div [hidden]="imagesLoaded"
+<div
 [ngStyle]="
 {
   'width':isPhone === true ? '90%' : '80%',
