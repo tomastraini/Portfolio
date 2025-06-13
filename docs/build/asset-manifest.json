@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/static/css/main.5f9e608e.css",
-    "main.js": "/static/js/main.cdd64019.js",
+    "main.js": "./static/js/main.cdd64019.js",
     "static/js/453.998496b1.chunk.js": "/static/js/453.998496b1.chunk.js",
     "static/media/CV Tomas.pdf": "/static/media/CV Tomas.56dcf913d746e6b0a69c.pdf",
     "static/media/ppc24_logo.jfif": "/static/media/ppc24_logo.9a8afc311e4f8b68b34b.jfif",
     "index.html": "/index.html",
     "main.5f9e608e.css.map": "/static/css/main.5f9e608e.css.map",
-    "main.cdd64019.js.map": "/static/js/main.cdd64019.js.map",
+    "main.cdd64019.js.map": "./static/js/main.cdd64019.js.map",
     "453.998496b1.chunk.js.map": "/static/js/453.998496b1.chunk.js.map"
   },
   "entrypoints": [
