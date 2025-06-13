@@ -1,0 +1,43 @@
+/* AboutMeView.css */
+.fade-in-about {
+  animation: fadeIn 1s ease-in-out;
+  background-color: rgb(34, 34, 34) !important;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+.elegant-text-paragraphs {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ddd; /* Light text for dark background */
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.elegant-text-headers {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2s steps(20, end);
+}
+
+.typewriter-phone {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 1.5s steps(15, end);
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
