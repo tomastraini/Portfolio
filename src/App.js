@@ -4,7 +4,7 @@ import AppSidebar from './components/Sidebar'; // Adjust path if needed
 import ResumeView from 'components/resumeView';
 import 'App.css'
 function App() {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(window.innerWidth < 768);
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh' }}>

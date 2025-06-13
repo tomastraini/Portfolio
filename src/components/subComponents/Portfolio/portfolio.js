@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const PortfolioView = () => {
   const [isPhone, setIsPhone] = useState(window.innerWidth < 768);
+  const [marginToUse] = useState(isPhone ? '15%' : '1%');
   const [, setImagesLoaded] = useState(0);
 
   useEffect(() => {
@@ -25,7 +26,7 @@ const PortfolioView = () => {
     <div
       id="Portfolio"
       className="fade-in-about"
-      style={{ height: isPhone ? '61%' : '8%' }}
+      style={{ height: isPhone ? '10%' : '8%'}}
     >
       <h1 className="main-header" style={{ fontWeight: 'bold', marginLeft: '1%' }}>
         PORTFOLIO
@@ -33,8 +34,8 @@ const PortfolioView = () => {
       <p className="elegant-text-paragraphs" style={{ marginLeft: '1%' }}>
         I'll be listing below some of the projects in which I have worked on and can be seen and used;
       </p>
-      <div style={{ display: 'flex' }}>
-        <div className="container" style={{ marginLeft: '1%' }}>
+      <div style={{ display: isPhone ? 'block' : 'flex' }}>
+        <div className="container" style={{ marginLeft: isPhone ? '25%' : '1%' }}>
           <div className="row mb-5">
             <div
               className="col elegant-text-paragraphs border border-dark rounded cursor-pointer imageAnimation5050"
@@ -57,7 +58,7 @@ const PortfolioView = () => {
             <div className="col"></div>
           </div>
         </div>
-        <div className="container">
+        <div className="container" style={{ marginLeft: marginToUse }}>
           <div className="row mb-5">
             <div
               className="col elegant-text-paragraphs border border-dark rounded cursor-pointer imageAnimation5050"
