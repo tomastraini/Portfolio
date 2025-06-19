@@ -76,7 +76,7 @@ const MySidebar = ({ onToggle, isCollapsed }) => {
             <MenuItem icon={<FaBriefcase />} onClick={() => doScroll('Resume')}>
               Professional Experience
             </MenuItem>
-            <MenuItem icon={<FaGraduationCap />} onClick={() => doScroll('Resume')}>
+            <MenuItem icon={<FaGraduationCap />} onClick={() => doScroll('Education')}>
               Education
             </MenuItem>
           </SubMenu>

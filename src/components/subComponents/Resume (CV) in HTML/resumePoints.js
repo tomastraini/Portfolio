@@ -123,7 +123,7 @@ const ResumePoints = () => {
 
         <hr className={isPhone ? 'hr-for-phone' : 'hr-for-pc'} />
 
-        <div className="elegant-text-paragraphs">
+        <div className="elegant-text-paragraphs" id='Education'>
           <h3 style={{ fontWeight: 'bold' }} >
             Education
           </h3>
