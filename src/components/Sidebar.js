@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaHome, FaUser, FaFile, FaGithub, FaLinkedin, FaBars, FaGraduationCap, FaBriefcase, FaGlobe, FaLaptopCode } from 'react-icons/fa';
+import { FaHome, FaUser, FaFile, FaGithub, FaLinkedin, FaBars, FaGraduationCap, FaBriefcase, FaGlobe, FaLaptopCode, FaBrain, FaAddressCard } from 'react-icons/fa';
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 
 const MySidebar = ({ onToggle, isCollapsed }) => {
@@ -65,13 +65,13 @@ const MySidebar = ({ onToggle, isCollapsed }) => {
           <MenuItem icon={<FaHome />} onClick={() => doScroll('Home')}>
             Home
           </MenuItem>
-          <MenuItem icon={<FaUser />} onClick={() => doScroll('AboutMe')}>
+          <MenuItem icon={<FaBrain />} onClick={() => doScroll('AboutMe')}>
             About
           </MenuItem>
           <SubMenu
             label={isCollapsed ? '' : 'Resume'}
             open={true}
-            icon={<FaFile />}
+            icon={<FaAddressCard />}
           >
             <MenuItem icon={<FaBriefcase />} onClick={() => doScroll('Resume')}>
               Professional Experience
