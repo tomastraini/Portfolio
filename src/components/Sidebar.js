@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaHome, FaUser, FaFile, FaGithub, FaLinkedin, FaBars, FaGraduationCap, FaBriefcase, FaGlobe, FaLaptopCode, FaBrain, FaAddressCard } from 'react-icons/fa';
+import { FaHome, FaGithub, FaLinkedin, FaBars, FaGraduationCap, FaBriefcase, FaGlobe, FaLaptopCode, FaBrain, FaAddressCard } from 'react-icons/fa';
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 
 const MySidebar = ({ onToggle, isCollapsed }) => {
@@ -89,7 +89,6 @@ const MySidebar = ({ onToggle, isCollapsed }) => {
             label={isCollapsed ? '' : 'Social Networks'}
             open={true}
             icon={<FaGlobe />}
-            style={{ marginBottom: '1rem' }}
           >
             <MenuItem icon={<FaGithub />} onClick={() => goTo('https://github.com/tomastraini')}>
               GitHub
