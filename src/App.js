@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
-import AppSidebar from './components/Sidebar'; // Adjust path if needed
+import AppSidebar from './components/Sidebar';
 import ResumeView from 'components/resumeView';
 import 'App.css'
 function App() {

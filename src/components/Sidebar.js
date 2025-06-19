@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaHome, FaUser, FaFile, FaBook, FaGithub, FaLinkedin, FaBars, FaConnectdevelop } from 'react-icons/fa';
+import { FaHome, FaUser, FaFile, FaGithub, FaLinkedin, FaBars, FaGraduationCap, FaBriefcase, FaGlobe, FaLaptopCode } from 'react-icons/fa';
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 
 const MySidebar = ({ onToggle, isCollapsed }) => {
@@ -62,27 +62,33 @@ const MySidebar = ({ onToggle, isCollapsed }) => {
             },
           }}
         >
-          <MenuItem icon={<FaHome />} onClick={() => doScroll('HomeAndAbout')}>
+          <MenuItem icon={<FaHome />} onClick={() => doScroll('Home')}>
             Home
           </MenuItem>
-          <MenuItem icon={<FaUser />} onClick={() => doScroll('HomeAndAbout')}>
+          <MenuItem icon={<FaUser />} onClick={() => doScroll('AboutMe')}>
             About
           </MenuItem>
-          <MenuItem icon={<FaFile />} onClick={() => doScroll('Resume')}>
-            Resume
-          </MenuItem>
-          <MenuItem icon={<FaBook />} onClick={() => doScroll('portfolio')}>
+          <SubMenu
+            label={isCollapsed ? '' : 'Resume'}
+            open={true}
+            icon={<FaFile />}
+          >
+            <MenuItem icon={<FaBriefcase />} onClick={() => doScroll('Resume')}>
+              Professional Experience
+            </MenuItem>
+            <MenuItem icon={<FaGraduationCap />} onClick={() => doScroll('Resume')}>
+              Education
+            </MenuItem>
+          </SubMenu>
+          <MenuItem icon={<FaLaptopCode />} onClick={() => doScroll('Portfolio')}>
             Portfolio
           </MenuItem>
 
-          {/* Spacer to push social links to the bottom */}
           <div style={{ flexGrow: 1 }}></div>
-
-          {/* Social Media Links */}
           <SubMenu
             label={isCollapsed ? '' : 'Social Networks'}
             open={true}
-            icon={<FaConnectdevelop />}
+            icon={<FaGlobe />}
             style={{ marginBottom: '1rem' }}
           >
             <MenuItem icon={<FaGithub />} onClick={() => goTo('https://github.com/tomastraini')}>

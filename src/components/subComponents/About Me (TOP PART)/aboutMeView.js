@@ -13,7 +13,7 @@ const AboutMeView = () => {
   }, []);
 
   return (
-    <div id="AboutMe" className="fade-in-about">
+    <div id="Home" className="fade-in-about">
       <h1
         className="main-header text-white"
         style={{ fontWeight: 'bold', marginLeft: isPhone ? '1%' : '0%' }}
@@ -29,7 +29,7 @@ const AboutMeView = () => {
         I'm fluent in English and conversational in German, and I thrive in cross-cultural teams. Constant learning drives me — I approach each new challenge as a chance to sharpen my tools and push boundaries.
       </p>
 
-      <div className="container-fluid">
+      <div className="container-fluid" id='AboutMe'>
         <div className="row">
           <div
             style={{
