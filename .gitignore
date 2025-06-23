@@ -22,8 +22,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # env variables
-/IA_BackEnd/app/.env
-/IA_BackEnd/app/**
-./IA_BackEnd/app/.env
-IA_BackEnd/app/** */
 IA_BackEnd/app/.env
