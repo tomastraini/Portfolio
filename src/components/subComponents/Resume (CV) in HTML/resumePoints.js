@@ -189,7 +189,7 @@ const ResumePoints = () => {
               <p className="elegant-text-paragraphs-darker mb-2 fw-bold">
                 14th March 2014 - 28th November 2018
               </p>
-              <li className="timeline-item-end"></li>
+              <u className="timeline-item-end"></u>
             </li>
           </ul>
         </div>
@@ -307,7 +307,7 @@ const ResumePoints = () => {
               <p className="elegant-text-paragraphs-darker mb-2 fw-bold">
                 28th November 2018
               </p>
-              <li className="timeline-item-end mb-5" />
+              <u className="timeline-item-end mb-5" />
             </li>
 
           </ul>
