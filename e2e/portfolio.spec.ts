@@ -154,3 +154,49 @@ test('hero photo carries no external host and has alt text', async ({ page }) =>
   const src = await img.getAttribute('src');
   expect(src).not.toMatch(/^https?:\/\//);
 });
+
+test.describe('pipeline diagram', () => {
+  test('appears once, inside the flagship case study only', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.locator('.pipeline')).toHaveCount(1);
+
+    const flagship = page.getByRole('article', { name: 'ClinigmaScriber' });
+    await expect(flagship.locator('.pipeline')).toBeVisible();
+
+    for (const other of ['Agentic development workflows', 'Schema-driven compliance documents']) {
+      const card = page.getByRole('article', { name: other });
+      await expect(card.locator('.pipeline')).toHaveCount(0);
+    }
+  });
+
+  test('lists the five stages in order as real text', async ({ page }) => {
+    await page.goto('/');
+    const titles = page.locator('.pipeline__stage h5');
+    await expect(titles).toHaveText([
+      'Recording',
+      'Machine draft',
+      'Transcription',
+      'Translation',
+      'Coding',
+    ]);
+  });
+
+  test('the three signed-off stages say so for a screen reader', async ({ page }) => {
+    await page.goto('/');
+    // T1, T2 and C are gated by a trial manager's signature; the first two
+    // stages are not, and the diagram should not imply otherwise.
+    await expect(page.locator('.pipeline__lock')).toHaveCount(3);
+    await expect(
+      page.getByText('Signed off by the trial manager before the next stage opens').first(),
+    ).toBeAttached();
+  });
+
+  test('stages are visible with motion reduced', async ({ browser }) => {
+    const ctx = await browser.newContext({ reducedMotion: 'reduce' });
+    const page = await ctx.newPage();
+    await page.goto('/');
+    await page.locator('.pipeline').scrollIntoViewIfNeeded();
+    await expect(page.locator('.pipeline__stage').first()).toHaveCSS('opacity', '1');
+    await ctx.close();
+  });
+});
