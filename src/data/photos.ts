@@ -46,35 +46,3 @@ export const heroPhoto = photo(
   'Somewhere over Europe, after dark',
 );
 
-export const galleryPhotos: Photo[] = [
-  photo(
-    'tower-night',
-    [1200, 700],
-    'A tall communications tower lit red and blue against a deep blue evening sky',
-    'Tower at dusk',
-  ),
-  photo(
-    'polaroid-bridge',
-    [1200, 700],
-    'An instant photograph of a river, a stone bridge and a boat, warm pink in tone',
-    'Instant film, river crossing',
-  ),
-  photo(
-    'old-street',
-    [1200, 700],
-    'A narrow cobbled street between old buildings, people walking away from the camera',
-    'Cobbles, late afternoon',
-  ),
-  photo(
-    'boulevard',
-    [1200, 700],
-    'A wide city boulevard under a bright sky, traffic light in the foreground',
-    'Wide street, bright sky',
-  ),
-  photo(
-    'church-square',
-    [1200, 700],
-    'An ornate iron street lamp in front of a church and a cypress tree',
-    'Lamp and church',
-  ),
-];

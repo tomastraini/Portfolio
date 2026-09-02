@@ -17,10 +17,11 @@ export const profile: Profile = {
   phone: '+54 341 282 2237',
   linkedin: 'https://www.linkedin.com/in/tomasutraini/',
   github: 'https://github.com/tomastraini',
+  clinigmaProfile: 'https://www.clinigma.com/team-members/tomas-traini',
   cv: `${import.meta.env.BASE_URL}CV-Tomas-Traini.pdf`,
   summary: [
     'Full-stack engineer, about five years in. Most of what I do now is clinical research software.',
-    'At CLINIGMA in Denmark I am the only engineer on ClinigmaScriber. It takes recorded patient interviews through transcription, translation and qualitative coding, on an audit trail built for trial work.',
+    'At CLINIGMA in Denmark I am the only engineer on their clinical research tooling, which turns recorded patient interviews into analysis-ready qualitative data.',
     'Before that, React and SAP-backed microservices at John Deere, and .NET modernization and security work at PwC.',
   ],
 };
@@ -31,97 +32,65 @@ export const navItems: NavItem[] = [
   { id: 'experience', label: 'Experience' },
   { id: 'skills', label: 'Skills' },
   { id: 'education', label: 'Education' },
-  { id: 'elsewhere', label: 'Elsewhere' },
   { id: 'contact', label: 'Contact' },
 ];
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: 'clinigmascriber',
-    name: 'ClinigmaScriber',
+    slug: 'clinical-tooling',
+    name: 'Clinical research tooling',
     org: 'CLINIGMA ApS, Denmark',
     status: 'pilot',
-    statusNote: 'First internal pilot on mock interviews, September 2026',
+    statusNote: 'In internal pilot',
     tagline:
-      'Turns recorded patient interviews into coded qualitative data, with an audit trail a clinical trial can stand behind.',
-    stack: [
-      'Python 3.11',
-      'FastAPI',
-      'SQLAlchemy',
-      'PostgreSQL 16',
-      'React',
-      'TypeScript',
-      'Vite',
-      'Zustand',
-      'TanStack Query',
-      'Lexical',
-      'Azure',
-    ],
+      'Turning recorded patient interviews into analysis-ready qualitative data, for research that has to stand up to review.',
+    stack: ['Python', 'FastAPI', 'PostgreSQL', 'React', 'TypeScript', 'Azure'],
     sections: [
       {
-        heading: 'What it does',
-        body: 'A recorded interview goes through three stages, transcription then translation then coding, and a clinical trial manager signs off on each one before the next can start. Transcripts are addressed sentence by sentence. Every published change is a commit, a log row and a named reviewer.',
+        heading: 'The role',
+        body: 'I am the only engineer on it. The architecture, the stack and the coding standards were mine to choose, with the CTO reviewing. It is a full-stack job in the literal sense: speech processing, data modelling, the editing interface people spend their day in, and the deployment underneath.',
       },
       {
-        heading: 'The versioning',
-        body: 'Each interview is a bare git repository, embedded in the application rather than shelled out to. Stages are long-lived branches, drafts are commits, locks are signed tags. No git word reaches the interface. Trial managers see Draft 3 and Final version, which is the vocabulary their paperwork already uses.',
+        heading: 'The interesting constraints',
+        body: 'In clinical research the hard part is not throughput. It is provenance. Who changed what, when, on whose authority, and can you still prove it a year later. That pushes the design somewhere quite different from a normal web application, and most of the engineering I am proud of here is a consequence of it.',
       },
       {
-        heading: 'Audio',
-        body: 'Azure Fast Transcription in production, giving word-level timestamps, speaker diarization and language detection. I also wrote a local CLI that runs Whisper, Qwen3 and pyannote over the same audio and scores them on word error rate and timing drift against synthesized ground truth. That is how the production backend got picked.',
-      },
-      {
-        heading: 'Translation',
-        body: 'Deriving a translation freezes a byte-exact copy of the locked source. When the source is re-locked, only the sentences that actually changed get re-translated. Everything a human already reviewed carries forward untouched, which was the whole point.',
-      },
-      {
-        heading: 'Coding and the codebook',
-        body: 'The coding stage is text-frozen. The server drops text edits at commit time, so coders can only add annotations. Codes anchor to sentence spans against a project codebook whose labels become immutable once used. Exchange runs on JSON today, and QDPX interop for ATLAS.ti, NVivo and MAXQDA is the next piece of work.',
-      },
-      {
-        heading: 'How it is kept honest',
-        body: 'Hexagonal backend with ports and adapters, enforced by import-linter rather than by good intentions. Around 4,500 backend and 2,800 frontend tests plus Cypress runs, behind twenty or so mechanical CI gates: a 500-line cap per file, layer import rules, cross-page import rules, a query key ledger, locale parity. Every bug gets written into a ledger along with the test that catches it again.',
+        heading: 'Why this entry is short',
+        body: 'It is an internal system at a company working under ICH-GCP, and the specifics belong to them rather than to my portfolio. I am glad to talk through the engineering in an interview, as far as my agreement allows.',
       },
     ],
     notClaimed: [
-      'It is not a validated or certifiable system. It sits on a Part 11 shaped substrate and the validation package does not exist.',
-      'Authentication and real authorization are still missing. The deployment is single tenant on a trusted network.',
-      'QDPX interop is committed work, not a shipped feature.',
-      'AI output is a proposal for a human to accept or throw away. Every model call is logged with its prompt and input and output hashes.',
+      'Implementation details are deliberately left out. That is a choice, not an omission.',
+      'In internal pilot rather than general release.',
     ],
   },
   {
     slug: 'agentic-workflows',
     name: 'Agentic development workflows',
-    org: 'CLINIGMA ApS, experimental',
+    org: 'Internal experiment',
     status: 'stopped',
     statusNote: 'R&D, used by two people',
     tagline:
       'An experiment in how far you can push agent orchestration before the coordination cost eats the gain.',
-    stack: ['GitHub', 'Microsoft Teams', 'LLM orchestration'],
+    stack: ['LLM orchestration'],
     sections: [
       {
-        heading: 'Board discussion',
-        body: 'Someone writes a brief, specialist agents argue it out against each other, and an orchestrator reads the whole thread before settling on a position. The interesting part was not the agents. It was finding out how much of the value came from the orchestrator seeing the disagreement rather than a tidy summary of it.',
+        heading: 'What it was',
+        body: 'A set of experiments chaining language model agents through a development workflow: refining an idea with a human in the loop, turning requirements into a shape, implementing against it, reviewing, and opening a pull request at the end. Built to find the limits rather than to ship.',
       },
       {
-        heading: 'Ticket flow',
-        body: 'It picks up a GitHub ticket, refines the idea with humans over Teams, then hands off through an idea refiner, an architect that turns requirements into a shape, one agent per stack, QA with a retry loop back into development, and finally a pull request. A separate flow does code review.',
-      },
-      {
-        heading: 'What it actually was',
-        body: 'R&D used by me and my manager. Two users. Its real outcome was influence: the approach fed into a large jQuery to React rewrite of the CLINIGMA portal, which my manager led and built with his own harness.',
+        heading: 'What I took from it',
+        body: 'Most of the value sat in the orchestration rather than in the agents. An orchestrator that reads a full disagreement between specialists reaches a better answer than one handed a tidy summary of it. And coordination cost is the thing that actually decides whether any of this is worth doing, which is why the experiment stopped where it did.',
       },
     ],
     notClaimed: [
-      'Never deployed as a product. Two users, both of them us.',
-      'The portal rewrite it fed into is my manager’s work, not mine.',
+      'Never a product. Two users, and one of them was me.',
     ],
   },
   {
     slug: 'schema-documents',
-    name: 'Schema-driven compliance documents',
-    org: 'CLINIGMA ApS',
+    name: 'Schema-driven documents',
+    org: 'Internal tooling',
     status: 'stopped',
     statusNote: 'Built, tested, stopped on purpose',
     tagline:
@@ -130,11 +99,11 @@ export const caseStudies: CaseStudy[] = [
     sections: [
       {
         heading: 'The idea',
-        body: 'Compliance-heavy clinical interview documents repeat the same structures across a project. I engineered reusable schema-driven units and forms so that one definition could serve many documents.',
+        body: 'A family of internal documents repeated the same structures over and over. I built a schema-driven system so that one definition could serve many of them.',
       },
       {
         heading: 'Why it failed',
-        body: 'It asked users to decide whether a form was multi-use or single-use, and whether an equivalent one already existed. Those are modelling questions. The people answering them mostly work in Word and were not helped by being handed a taxonomy problem. The engineering held up fine. The product was wrong, and being able to say that out loud is part of the job.',
+        body: 'It asked people to decide whether a form was reusable or single use, and whether an equivalent already existed. Those are modelling questions. The people answering them mostly work in Word and were not helped by being handed a taxonomy problem. The engineering held up fine. The product was wrong, and being able to say that out loud is part of the job.',
       },
     ],
     notClaimed: [
@@ -152,10 +121,11 @@ export const roles: Role[] = [
     location: 'Denmark, remote',
     note: 'In-trial patient interviews and qualitative patient-experience data for pharmaceutical research and regulatory submissions, under ICH-GCP and ISO 9001.',
     bullets: [
-      'Sole engineer on ClinigmaScriber. I chose the architecture, the stack and the coding standards, with the CTO reviewing.',
-      'Built the transcription, translation and coding lifecycle on embedded git, addressed sentence by sentence, with append-only audit records.',
-      'Set the CI gates and the bug-precedent discipline the codebase runs on.',
-      'Built a schema-driven compliance document system and then argued for stopping it when testing showed it was wrong for its users.',
+      'Sole engineer on the company clinical research tooling. I chose the architecture, the stack and the coding standards, with the CTO reviewing.',
+      'Speech-to-text work: transcription, speaker diarization, and keeping audio aligned with the text after people have edited it.',
+      'Versioning and audit trails for work that has to stay reviewable long after the fact.',
+      'Set the testing and CI discipline the codebase runs on.',
+      'Built an internal document system and then argued for stopping it when testing showed it was wrong for its users.',
     ],
     tech: ['Python', 'FastAPI', 'PostgreSQL', 'React', 'TypeScript', 'Azure'],
   },

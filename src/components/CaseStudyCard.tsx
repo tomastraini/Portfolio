@@ -1,4 +1,3 @@
-import { Pipeline } from './Pipeline';
 import type { CaseStudy, ProjectStatus } from '../types';
 
 const statusLabel: Record<ProjectStatus, string> = {
@@ -46,8 +45,6 @@ export function CaseStudyCard({ study, flagship = false }: CaseStudyCardProps) {
           ))}
         </ul>
       </div>
-
-      {study.slug === 'clinigmascriber' ? <Pipeline /> : null}
 
       <div className="case__body">
         {study.sections.map((section) => (

@@ -4,7 +4,6 @@ export type SectionId =
   | 'experience'
   | 'skills'
   | 'education'
-  | 'elsewhere'
   | 'contact';
 
 export interface NavItem {
@@ -21,6 +20,7 @@ export interface Profile {
   phone: string;
   linkedin: string;
   github: string;
+  clinigmaProfile: string;
   cv: string;
   summary: string[];
 }
