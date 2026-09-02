@@ -8,7 +8,27 @@ const ids = navItems.map((item) => item.id);
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const active = useActiveSection(ids);
+
+  // The bar sits over the hero photograph, so it stays transparent until the
+  // page has moved and only then takes on a background.
+  useEffect(() => {
+    let frame = 0;
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        setScrolled(window.scrollY > 80);
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
 
   // Close the drawer once the viewport is wide enough to show the full bar,
   // otherwise it stays mounted and invisible with focusable children in it.
@@ -27,7 +47,7 @@ export function Nav() {
   };
 
   return (
-    <header className="nav">
+    <header className={`nav${scrolled || open ? ' nav--solid' : ''}`}>
       <nav className="nav__inner page" aria-label="Main">
         <a
           className="nav__brand"

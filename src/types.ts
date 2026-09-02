@@ -4,6 +4,7 @@ export type SectionId =
   | 'experience'
   | 'skills'
   | 'education'
+  | 'elsewhere'
   | 'contact';
 
 export interface NavItem {
@@ -74,4 +75,16 @@ export interface Study {
   period: string;
   detail: string;
   inProgress?: boolean;
+}
+
+export interface Photo {
+  name: string;
+  alt: string;
+  caption: string;
+  width: number;
+  height: number;
+  /** Inline 20px-wide WebP, shown until the real file decodes. */
+  lqip: string;
+  src: string;
+  srcSet: string;
 }

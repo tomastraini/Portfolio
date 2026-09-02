@@ -339,10 +339,90 @@ button {
 
 /* ---------------------------------------------------------------------------
    Hero
+   Full-bleed, full-height, photograph behind everything. The parallax and the
+   staggered reveal are the only showy things on the page; everything below
+   this section stays quiet on purpose.
 --------------------------------------------------------------------------- */
 
 .hero {
-  padding-block: var(--space-8) var(--space-7);
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+  /* Pull up under the sticky transparent nav. */
+  margin-top: calc(var(--nav-h) * -1);
+  padding-block: calc(var(--nav-h) + var(--space-8)) var(--space-8);
+  background: #05070a;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0) scale(1.08);
+}
+
+.hero__bg img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 42%;
+}
+
+.hero__lqip {
+  filter: blur(18px);
+  transform: scale(1.06);
+}
+
+.hero__img {
+  opacity: 0;
+  transition: opacity 0.9s var(--ease);
+}
+
+.hero__img.is-loaded {
+  opacity: 1;
+}
+
+/* Two scrims: a vertical one so the nav and the lower edge stay readable, and
+   a corner wash that keeps the text side darker than the photograph. */
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 7, 10, 0.92) 0%,
+      rgba(5, 7, 10, 0.55) 28%,
+      rgba(5, 7, 10, 0.6) 62%,
+      rgba(11, 13, 16, 0.97) 100%
+    ),
+    radial-gradient(
+      120% 90% at 12% 45%,
+      rgba(5, 7, 10, 0.88) 0%,
+      rgba(5, 7, 10, 0.2) 55%,
+      transparent 80%
+    );
+}
+
+.hero__grain {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.16;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+.hero__inner {
+  position: relative;
+  width: 100%;
 }
 
 .hero__eyebrow {
@@ -351,8 +431,10 @@ button {
   gap: var(--space-2);
   font-family: var(--font-mono);
   font-size: var(--step--1);
-  color: var(--text-muted);
-  border: 1px solid var(--line-strong);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(6px);
   border-radius: var(--radius-pill);
   padding: var(--space-1) var(--space-3);
   margin-bottom: var(--space-5);
@@ -363,12 +445,35 @@ button {
   height: 7px;
   border-radius: 50%;
   background: var(--status-shipped);
+  box-shadow: 0 0 0 0 rgba(92, 184, 122, 0.7);
+  animation: pulse 2.6s var(--ease) infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(92, 184, 122, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 9px rgba(92, 184, 122, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(92, 184, 122, 0);
+  }
 }
 
 .hero__name {
-  font-size: var(--step-4);
-  letter-spacing: -0.03em;
-  margin-bottom: var(--space-3);
+  font-size: clamp(2.4rem, 1.4rem + 4.6vw, 5.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  margin-bottom: var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.28em;
+  text-shadow: 0 2px 40px rgba(0, 0, 0, 0.6);
+}
+
+.hero__word {
+  display: inline-block;
 }
 
 .hero__title {
@@ -376,36 +481,21 @@ button {
   color: var(--accent);
   font-weight: 500;
   margin-bottom: var(--space-5);
+  text-shadow: 0 1px 24px rgba(0, 0, 0, 0.7);
 }
 
 .hero__summary {
-  max-width: var(--measure);
+  max-width: 60ch;
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  color: var(--text-muted);
+  color: rgba(232, 234, 237, 0.82);
   font-size: var(--step-1);
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 .hero__summary p:first-child {
   color: var(--text);
-}
-
-.hero__meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2) var(--space-5);
-  margin-top: var(--space-6);
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--line);
-  font-size: var(--step--1);
-  color: var(--text-muted);
-}
-
-.hero__meta strong {
-  color: var(--text);
-  font-weight: 500;
 }
 
 .hero__actions {
@@ -415,38 +505,161 @@ button {
   margin-top: var(--space-6);
 }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-3) var(--space-5);
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--line-strong);
-  background: var(--surface-raised);
-  color: var(--text);
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-6);
+  margin: var(--space-7) 0 0;
+  padding-top: var(--space-5);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   font-size: var(--step--1);
-  font-weight: 500;
-  transition: background 0.15s var(--ease), border-color 0.15s var(--ease),
-    transform 0.15s var(--ease);
 }
 
-.btn:hover {
-  background: var(--surface-hover);
-  border-color: var(--accent-dim);
+.hero__meta div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero__meta dt {
+  color: rgba(232, 234, 237, 0.5);
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+.hero__meta dd {
+  margin: 0;
   color: var(--text);
-  transform: translateY(-1px);
 }
 
-.btn--primary {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #0b0d10;
+.hero__caption {
+  position: absolute;
+  right: var(--space-5);
+  bottom: var(--space-4);
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: rgba(232, 234, 237, 0.34);
+  writing-mode: vertical-rl;
 }
 
-.btn--primary:hover {
-  background: #86b8ff;
-  border-color: #86b8ff;
-  color: #0b0d10;
+@media (max-width: 767px) {
+  .hero__caption {
+    display: none;
+  }
+}
+
+/* Staggered entrance. Each element sets --i and inherits the same curve. */
+.reveal {
+  animation: rise-in 0.85s var(--ease) both;
+  animation-delay: calc(var(--i, 0) * 90ms + 120ms);
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* With motion reduced: no parallax transform, no drift, no stagger. The photo
+   and every word are simply there. */
+.hero--still .hero__bg {
+  transform: none;
+}
+
+.hero--still .reveal {
+  animation: none;
+}
+
+.hero--still .hero__dot {
+  animation: none;
+}
+
+/* ---------------------------------------------------------------------------
+   Photo strip
+--------------------------------------------------------------------------- */
+
+.strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-4);
+}
+
+.frame {
+  margin: 0;
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.strip.is-in .frame {
+  animation: rise-in 0.8s var(--ease) both;
+  animation-delay: calc(var(--i, 0) * 110ms);
+}
+
+.frame__media {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.frame__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease), opacity 0.7s var(--ease);
+}
+
+.frame__lqip {
+  filter: blur(14px);
+  transform: scale(1.08);
+}
+
+.frame__img {
+  opacity: 0;
+}
+
+.frame__img.is-loaded {
+  opacity: 1;
+}
+
+.frame:hover .frame__img.is-loaded {
+  transform: scale(1.05);
+}
+
+.frame figcaption {
+  margin-top: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frame {
+    opacity: 1;
+    transform: none;
+  }
+
+  .strip.is-in .frame {
+    animation: none;
+  }
+
+  .frame:hover .frame__img.is-loaded {
+    transform: none;
+  }
 }
 
 /* ---------------------------------------------------------------------------
@@ -908,4 +1121,95 @@ button {
 
 .rise {
   animation: rise 0.5s var(--ease) both;
+}
+
+/* Nav sits over the hero photograph until the page moves. */
+.nav {
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom-color: transparent;
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.nav--solid {
+  background: rgba(11, 13, 16, 0.82);
+  backdrop-filter: blur(12px);
+  border-bottom-color: var(--line);
+}
+
+/* The first section after a full-bleed hero does not need a top rule. */
+.section:first-of-type {
+  border-top: none;
+}
+
+/* ---------------------------------------------------------------------------
+   Buttons
+--------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(8px);
+  color: var(--text);
+  font-size: var(--step--1);
+  font-weight: 500;
+  transition: background 0.15s var(--ease), border-color 0.15s var(--ease),
+    transform 0.15s var(--ease);
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.13);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+.btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #06080b;
+}
+
+.btn--primary:hover {
+  background: #8cbcff;
+  border-color: #8cbcff;
+  color: #06080b;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn:hover {
+    transform: none;
+  }
+}
+
+/* On a phone the three summary paragraphs pushed both buttons below the fold.
+   Smaller copy and tighter rhythm brings the call to action back into view. */
+@media (max-width: 600px) {
+  .hero {
+    padding-block: calc(var(--nav-h) + var(--space-6)) var(--space-6);
+  }
+
+  .hero__summary {
+    font-size: var(--step-0);
+    gap: var(--space-2);
+    line-height: 1.5;
+  }
+
+  .hero__title {
+    margin-bottom: var(--space-4);
+  }
+
+  .hero__actions {
+    margin-top: var(--space-5);
+  }
+
+  .hero__meta {
+    margin-top: var(--space-6);
+    gap: var(--space-3) var(--space-5);
+  }
 }

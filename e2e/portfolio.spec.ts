@@ -116,3 +116,41 @@ test('no em dashes in the rendered copy', async ({ page }) => {
   const text = await page.evaluate(() => document.body.innerText);
   expect(text).not.toContain('\u2014');
 });
+
+test.describe('motion preferences', () => {
+  // An explicit context rather than test.use: this guarantees the emulation is
+  // in place before the first render, which is when the hook reads the query.
+  test('hero renders fully with motion disabled', async ({ browser }) => {
+    const ctx = await browser.newContext({ reducedMotion: 'reduce' });
+    const page = await ctx.newPage();
+    await page.goto('/');
+
+    await expect(page.locator('#top')).toHaveClass(/hero--still/);
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+    await expect(page.locator('.hero__name')).toHaveCSS('opacity', '1');
+    await expect(page.locator('.hero__bg')).toHaveCSS('transform', 'none');
+
+    await ctx.close();
+  });
+
+  test('photo strip frames are visible without the stagger', async ({ browser }) => {
+    const ctx = await browser.newContext({ reducedMotion: 'reduce' });
+    const page = await ctx.newPage();
+    await page.goto('/');
+
+    await page.locator('#elsewhere').scrollIntoViewIfNeeded();
+    const frames = page.locator('.frame');
+    await expect(frames).toHaveCount(5);
+    await expect(frames.first()).toHaveCSS('opacity', '1');
+
+    await ctx.close();
+  });
+});
+
+test('hero photo carries no external host and has alt text', async ({ page }) => {
+  await page.goto('/');
+  const img = page.locator('.hero__img');
+  await expect(img).toHaveAttribute('alt', /.+/);
+  const src = await img.getAttribute('src');
+  expect(src).not.toMatch(/^https?:\/\//);
+});
