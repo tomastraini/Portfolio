@@ -9,7 +9,7 @@ test('renders the hero with name and title', async ({ page }) => {
     page.getByRole('heading', { level: 1, name: 'Tomas Ulises Traini' }),
   ).toBeVisible();
   await expect(
-    page.getByText('Software Engineer — Clinical Research Systems'),
+    page.getByText('Software Engineer, Clinical Research Systems'),
   ).toBeVisible();
   await expect(page).toHaveTitle(/Tomas Traini/);
 });
@@ -33,7 +33,7 @@ test('flagship case study leads the work section and states its limits', async (
 
   // The honesty markers are the reason the section exists — assert one directly.
   await expect(
-    flagship.getByText(/Not a validated or certifiable system/),
+    flagship.getByText(/not a validated or certifiable system/i),
   ).toBeVisible();
 });
 
@@ -109,4 +109,10 @@ test('mobile menu opens and navigates', async ({ page }) => {
   await drawer.getByRole('button', { name: 'Experience' }).click();
   await expect(drawer).toBeHidden();
   await expect(page.locator('#experience')).toBeInViewport();
+});
+
+test('no em dashes in the rendered copy', async ({ page }) => {
+  // House style: em dashes read as machine-written, so they stay out.
+  const text = await page.evaluate(() => document.body.innerText);
+  expect(text).not.toContain('\u2014');
 });

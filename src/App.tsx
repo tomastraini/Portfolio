@@ -26,7 +26,7 @@ export default function App() {
           id="work"
           index="01"
           title="Work"
-          lede="Three projects from CLINIGMA. One is in pilot, two were stopped on purpose — the status marker on each is the point, not decoration."
+          lede="Three projects from CLINIGMA. One is in pilot and two were stopped on purpose. The status on each one is accurate rather than flattering."
         >
           <div className="cases">
             {flagship ? <CaseStudyCard study={flagship} flagship /> : null}
@@ -40,7 +40,7 @@ export default function App() {
           id="experience"
           index="02"
           title="Experience"
-          lede="Five years, from .NET backends to regulated clinical systems."
+          lede="Five years. Started in .NET backends, ended up in regulated clinical systems."
         >
           <Experience />
         </Section>
@@ -49,7 +49,7 @@ export default function App() {
           id="skills"
           index="03"
           title="Skills"
-          lede="Things I have shipped with, not things I have read about."
+          lede="Things I have actually shipped with."
         >
           <Skills />
         </Section>
@@ -62,7 +62,7 @@ export default function App() {
           id="contact"
           index="05"
           title="Contact"
-          lede="Open to software engineering roles in health tech, regulated systems and product-owning teams — remote, or relocation within the EU."
+          lede="Open to software engineering roles in health tech, regulated systems and product-owning teams. Remote, or relocation within the EU."
         >
           <Contact />
         </Section>
