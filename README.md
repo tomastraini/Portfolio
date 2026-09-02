@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Personal site for Tomas Ulises Traini — software engineer working on clinical
+research systems. Live at <https://tomastraini.github.io/Portfolio/>.
 
-## Available Scripts
+React 19 + TypeScript on Vite. No UI framework: the design system is about
+120 lines of CSS custom properties in `src/styles/global.css`, and every
+component composes from those tokens.
 
-In the project directory, you can run:
+## Running it
 
-### `npm start`
+```bash
+npm install
+npm run dev        # http://localhost:5173/Portfolio/
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+If `npm install` reports blocked install scripts, approve esbuild's — Vite
+needs its platform binary:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm install-scripts approve esbuild
+```
 
-### `npm test`
+## Scripts
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Command | What it does |
+|---|---|
+| `npm run dev` | Vite dev server on the `/Portfolio/` base path |
+| `npm run build` | Typecheck, then build into `docs/` for GitHub Pages |
+| `npm run preview` | Serve the built output locally |
+| `npm run typecheck` | `tsc -b` across app, config and e2e |
+| `npm run test:e2e` | Playwright suite (desktop + mobile projects) |
+| `npm run test:e2e:ui` | Playwright in watch/UI mode |
 
-### `npm run build`
+First Playwright run needs browsers: `npx playwright install chromium`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Layout
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+src/
+  data/content.ts     # all site content, typed — the only file to edit for copy changes
+  types.ts            # content model
+  components/         # presentational, one concern each
+  hooks/              # useActiveSection (IntersectionObserver nav highlighting)
+  styles/global.css   # design tokens + component styles
+e2e/                  # Playwright specs
+docs/                 # build output, committed — GitHub Pages source
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Content and presentation are separate on purpose.** Updating a job, a project
+or a skill means editing `src/data/content.ts` only; no component changes, and
+the types stop half-finished edits at compile time.
 
-### `npm run eject`
+## Deploying
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+GitHub Pages serves the `docs/` folder on the default branch.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm run build
+git add docs && git commit -m "Rebuild site"
+git push
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Notes
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `ProjectStatus` (`pilot` / `shipped` / `planned` / `stopped`) and each case
+  study's `notClaimed` list are load-bearing. Work that has not shipped is
+  labelled as such, and the limits are stated rather than omitted.
+- No hotlinked external images. The previous version pulled logos from third
+  parties and a LinkedIn CDN photo with an expiring token; a Playwright test now
+  fails if any `img src` points at an external host.
+- `IA_BackEnd/` is a separate FastAPI experiment kept in this repo. It is not
+  part of the site build.
