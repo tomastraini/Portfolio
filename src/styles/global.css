@@ -1213,3 +1213,249 @@ button {
     gap: var(--space-3) var(--space-5);
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Pipeline diagram
+   Real text in an ordered list rather than a picture, so it stays selectable,
+   translatable and readable by a screen reader. The rail and the travelling
+   pulse are decoration drawn behind it.
+--------------------------------------------------------------------------- */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.pipeline {
+  padding: var(--space-5);
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(
+      120% 100% at 50% 0%,
+      rgba(110, 168, 254, 0.05) 0%,
+      transparent 60%
+    ),
+    var(--surface-raised);
+}
+
+@media (min-width: 768px) {
+  .pipeline {
+    padding: var(--space-6);
+  }
+}
+
+.pipeline__title {
+  font-size: var(--step--1);
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: var(--space-5);
+}
+
+.pipeline__stages {
+  position: relative;
+  display: grid;
+  gap: var(--space-5);
+  /* The node keys carry the sequence, so the list markers would only
+     duplicate them and knock the nodes off the rail. */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 860px) {
+  .pipeline__stages {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+
+  /* The rail, and the pulse that runs along it. */
+  /* The rail runs from the centre of the first node to the centre of the
+     last. Nodes sit at the start of each grid column rather than centred in
+     it, so the right inset is one column width minus half a node. */
+  .pipeline__stages::before,
+  .pipeline__stages::after {
+    content: '';
+    position: absolute;
+    top: 18px;
+    left: 19px;
+    right: calc((100% - 4 * var(--space-4)) / 5 - 19px);
+    height: 2px;
+    border-radius: 2px;
+  }
+
+  .pipeline__stages::before {
+    background: var(--line-strong);
+  }
+
+  .pipeline__stages::after {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--accent) 45%,
+      var(--accent) 55%,
+      transparent 100%
+    );
+    background-size: 26% 100%;
+    background-repeat: no-repeat;
+    opacity: 0;
+  }
+
+  .pipeline.is-in .pipeline__stages::after {
+    opacity: 0.9;
+    animation: rail-flow 4.2s linear 0.6s infinite;
+  }
+}
+
+@keyframes rail-flow {
+  from {
+    background-position: -30% 0;
+  }
+  to {
+    background-position: 130% 0;
+  }
+}
+
+/* Vertical rail once the stages stack. */
+@media (max-width: 859px) {
+  .pipeline__stages::before {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 20px;
+    bottom: 20px;
+    width: 2px;
+    background: var(--line-strong);
+  }
+}
+
+.pipeline__stage {
+  position: relative;
+  opacity: 0;
+}
+
+@media (max-width: 859px) {
+  /* Clear the 38px node plus the lock badge that overhangs its corner,
+     otherwise the badge lands on top of the stage heading. */
+  .pipeline__stage {
+    padding-left: 3.5rem;
+    min-height: 44px;
+  }
+}
+
+.pipeline.is-in .pipeline__stage {
+  animation: rise-in 0.7s var(--ease) both;
+  animation-delay: calc(var(--i, 0) * 130ms);
+}
+
+.pipeline__node {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  border: 2px solid var(--line-strong);
+  margin-bottom: var(--space-3);
+  z-index: 1;
+}
+
+@media (max-width: 859px) {
+  .pipeline__node {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.pipeline__key {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.pipeline__lock {
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--status-shipped-wash);
+  border: 1px solid var(--status-shipped);
+  color: var(--status-shipped);
+  font-size: 9px;
+}
+
+.pipeline__stage h5 {
+  font-size: var(--step-0);
+  margin-bottom: var(--space-2);
+  color: var(--text);
+}
+
+.pipeline__stage p {
+  font-size: var(--step--1);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.pipeline__loop,
+.pipeline__substrate {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--step--1);
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 78ch;
+}
+
+.pipeline__loop {
+  margin-top: var(--space-6);
+  padding: var(--space-3) var(--space-4);
+  border-left: 2px solid var(--accent-dim);
+  background: var(--accent-wash);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.pipeline__loop svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--accent);
+}
+
+.pipeline__substrate {
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px dashed var(--line-strong);
+  color: var(--text-dim);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pipeline__stage {
+    opacity: 1;
+  }
+
+  .pipeline.is-in .pipeline__stage {
+    animation: none;
+  }
+
+  .pipeline.is-in .pipeline__stages::after {
+    animation: none;
+    opacity: 0;
+  }
+}
