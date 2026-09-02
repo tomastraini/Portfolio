@@ -4,7 +4,6 @@ import { Education } from './components/Education';
 import { Experience } from './components/Experience';
 import { Hero } from './components/Hero';
 import { Nav } from './components/Nav';
-import { PhotoStrip } from './components/PhotoStrip';
 import { Section } from './components/Section';
 import { Skills } from './components/Skills';
 import { caseStudies, profile } from './data/content';
@@ -60,17 +59,8 @@ export default function App() {
         </Section>
 
         <Section
-          id="elsewhere"
-          index="05"
-          title="Elsewhere"
-          lede="Two weeks around Europe in July. Mostly walking, some of it useful thinking time."
-        >
-          <PhotoStrip />
-        </Section>
-
-        <Section
           id="contact"
-          index="06"
+          index="05"
           title="Contact"
           lede="Open to software engineering roles in health tech, regulated systems and product-owning teams. Remote, or relocation within the EU."
         >

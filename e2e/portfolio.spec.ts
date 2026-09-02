@@ -26,22 +26,50 @@ test('every main section is present and labelled', async ({ page }) => {
 test('flagship case study leads the work section and states its limits', async ({
   page,
 }) => {
-  const flagship = page.getByRole('article', { name: 'ClinigmaScriber' });
+  const flagship = page.getByRole('article', { name: 'Clinical research tooling' });
   await expect(flagship).toBeVisible();
   await expect(flagship.getByText('In pilot')).toBeVisible();
   await expect(flagship.getByText('What this does not claim')).toBeVisible();
 
-  // The honesty markers are the reason the section exists — assert one directly.
+  // The limits block stays, but it now states that detail is withheld rather
+  // than describing the client's security posture in public.
   await expect(
-    flagship.getByText(/not a validated or certifiable system/i),
+    flagship.getByText(/Implementation details are deliberately left out/i),
   ).toBeVisible();
+});
+
+test('no client implementation detail is published', async ({ page }) => {
+  // Compliance guard. These leaked internals of a regulated client's system,
+  // including its security posture, and must not come back.
+  //
+  // Deliberately not on this list: QDPX, REFI-QDA, ICH-GCP, GxP and 21 CFR
+  // Part 11. Those are public standards and naming them describes what Tomas
+  // knows, not how the client's system is built.
+  const text = await page.evaluate(() => document.body.innerText);
+  const banned = [
+    'ClinigmaScriber',
+    'dulwich',
+    'Azure Fast Transcription',
+    'Azure Translator',
+    'import-linter',
+    'append-only',
+    'authentication',
+    'authorization',
+    'single tenant',
+    'jQuery',
+    'pyannote',
+    'Whisper',
+  ];
+  for (const term of banned) {
+    expect(text.toLowerCase()).not.toContain(term.toLowerCase());
+  }
 });
 
 test('stopped projects are marked as stopped, not dressed up', async ({
   page,
 }) => {
   const schema = page.getByRole('article', {
-    name: 'Schema-driven compliance documents',
+    name: 'Schema-driven documents',
   });
   // Exact match: the badge reads "Stopped", the note below it also contains
   // the word "stopped" and would otherwise make this ambiguous.
@@ -133,18 +161,7 @@ test.describe('motion preferences', () => {
     await ctx.close();
   });
 
-  test('photo strip frames are visible without the stagger', async ({ browser }) => {
-    const ctx = await browser.newContext({ reducedMotion: 'reduce' });
-    const page = await ctx.newPage();
-    await page.goto('/');
 
-    await page.locator('#elsewhere').scrollIntoViewIfNeeded();
-    const frames = page.locator('.frame');
-    await expect(frames).toHaveCount(5);
-    await expect(frames.first()).toHaveCSS('opacity', '1');
-
-    await ctx.close();
-  });
 });
 
 test('hero photo carries no external host and has alt text', async ({ page }) => {
@@ -155,48 +172,3 @@ test('hero photo carries no external host and has alt text', async ({ page }) =>
   expect(src).not.toMatch(/^https?:\/\//);
 });
 
-test.describe('pipeline diagram', () => {
-  test('appears once, inside the flagship case study only', async ({ page }) => {
-    await page.goto('/');
-    await expect(page.locator('.pipeline')).toHaveCount(1);
-
-    const flagship = page.getByRole('article', { name: 'ClinigmaScriber' });
-    await expect(flagship.locator('.pipeline')).toBeVisible();
-
-    for (const other of ['Agentic development workflows', 'Schema-driven compliance documents']) {
-      const card = page.getByRole('article', { name: other });
-      await expect(card.locator('.pipeline')).toHaveCount(0);
-    }
-  });
-
-  test('lists the five stages in order as real text', async ({ page }) => {
-    await page.goto('/');
-    const titles = page.locator('.pipeline__stage h5');
-    await expect(titles).toHaveText([
-      'Recording',
-      'Machine draft',
-      'Transcription',
-      'Translation',
-      'Coding',
-    ]);
-  });
-
-  test('the three signed-off stages say so for a screen reader', async ({ page }) => {
-    await page.goto('/');
-    // T1, T2 and C are gated by a trial manager's signature; the first two
-    // stages are not, and the diagram should not imply otherwise.
-    await expect(page.locator('.pipeline__lock')).toHaveCount(3);
-    await expect(
-      page.getByText('Signed off by the trial manager before the next stage opens').first(),
-    ).toBeAttached();
-  });
-
-  test('stages are visible with motion reduced', async ({ browser }) => {
-    const ctx = await browser.newContext({ reducedMotion: 'reduce' });
-    const page = await ctx.newPage();
-    await page.goto('/');
-    await page.locator('.pipeline').scrollIntoViewIfNeeded();
-    await expect(page.locator('.pipeline__stage').first()).toHaveCSS('opacity', '1');
-    await ctx.close();
-  });
-});

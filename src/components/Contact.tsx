@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { FiFileText, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
+import { FiBriefcase, FiFileText, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 import { profile } from '../data/content';
 
 interface Link {
@@ -29,6 +29,13 @@ const links: Link[] = [
     label: 'GitHub',
     value: 'tomastraini',
     href: profile.github,
+    external: true,
+  },
+  {
+    icon: <FiBriefcase aria-hidden="true" />,
+    label: 'CLINIGMA',
+    value: 'Team profile',
+    href: profile.clinigmaProfile,
     external: true,
   },
   {
