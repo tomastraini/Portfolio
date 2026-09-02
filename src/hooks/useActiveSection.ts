@@ -3,7 +3,7 @@ import type { SectionId } from '../types';
 
 /**
  * Tracks which section is currently in view so the nav can mark it.
- * Uses IntersectionObserver rather than a scroll listener — no layout
+ * Uses IntersectionObserver rather than a scroll listener, so no layout
  * thrashing, and it survives the sticky-nav offset via rootMargin.
  */
 export function useActiveSection(ids: readonly SectionId[]): SectionId {

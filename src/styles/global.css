@@ -1,7 +1,7 @@
 /* ---------------------------------------------------------------------------
    Design tokens
    One dark palette, one type scale, one spacing rhythm. Everything else
-   composes from these — no magic pixel values scattered through components.
+   composes from these. No magic pixel values scattered through components.
 --------------------------------------------------------------------------- */
 
 :root {
@@ -20,7 +20,7 @@
   --line: #232830;
   --line-strong: #2f353f;
 
-  /* Accent — a single hue, used sparingly so it still means something */
+  /* Accent: a single hue, used sparingly so it still means something */
   --accent: #6ea8fe;
   --accent-dim: #3d6db8;
   --accent-wash: rgba(110, 168, 254, 0.1);
@@ -631,11 +631,16 @@ button {
   line-height: 1.6;
 }
 
+/* A drawn rule rather than a dash glyph, so the marker is styling
+   and not a character that ends up in copied text. */
 .case__limits li::before {
-  content: '—';
+  content: '';
   position: absolute;
   left: 0;
-  color: var(--text-dim);
+  top: 0.72em;
+  width: 11px;
+  height: 1px;
+  background: var(--line-strong);
 }
 
 /* ---------------------------------------------------------------------------
@@ -887,7 +892,7 @@ button {
 }
 
 /* ---------------------------------------------------------------------------
-   Entrance animation — opt-in, and disabled under reduced motion above
+   Entrance animation, opt-in, disabled under reduced motion above
 --------------------------------------------------------------------------- */
 
 @keyframes rise {
